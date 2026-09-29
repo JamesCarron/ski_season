@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b3d91">
+<meta name="robots" content="noindex, nofollow">
+<title>Ski Trip Jan–Feb 27</title>
+<style>
+:root{
+  --bg:#f4f7fb; --card:#ffffff; --ink:#132033; --muted:#5b6b80; --line:#dde4ee;
+  --accent:#1f6feb; --good:#1a7f4b; --goodbg:#e3f5ea; --mid:#9a6700; --midbg:#fff4d6;
+  --bad:#b42318; --badbg:#fde7e5; --hero1:#0b3d91; --hero2:#3aa0ff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1420; --card:#152032; --ink:#e7eef8; --muted:#9fb0c6; --line:#26354c;
+    --accent:#6aa8ff; --good:#5fd394; --goodbg:#133226; --mid:#f2c14e; --midbg:#352a0e;
+    --bad:#ff8a80; --badbg:#3a1714; --hero1:#0a2350; --hero2:#1c5fb0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1420; --card:#152032; --ink:#e7eef8; --muted:#9fb0c6; --line:#26354c;
+  --accent:#6aa8ff; --good:#5fd394; --goodbg:#133226; --mid:#f2c14e; --midbg:#352a0e;
+  --bad:#ff8a80; --badbg:#3a1714; --hero1:#0a2350; --hero2:#1c5fb0;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-wrap:anywhere}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 40px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+header{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:28px 0 22px;margin-bottom:18px}
+h1{margin:0;font-size:clamp(26px,7vw,40px);font-weight:800;line-height:1.15}
+header p{margin:6px 0 0;opacity:.92;font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pill{background:rgba(255,255,255,.18);padding:4px 10px;border-radius:99px;font-size:13px}
+nav.jump{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 8px;padding:8px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+nav.jump::-webkit-scrollbar{display:none}
+nav.jump a{flex:0 0 auto;font-size:14px;text-decoration:none;color:var(--accent);border:1px solid var(--line);background:var(--card);padding:8px 12px;border-radius:99px;min-height:40px;display:flex;align-items:center}
+h2{font-size:20px;margin:26px 0 10px;scroll-margin-top:64px}
+.note{color:var(--muted);font-size:13px;margin:-4px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.rec{border-left:6px solid var(--good)}
+.rec h3{margin:0 0 6px;font-size:18px;line-height:1.3}
+.rec p{margin:6px 0 0;font-size:15px}
+.stack{display:grid;gap:12px}
+@media (min-width:700px){.stack.two{grid-template-columns:1fr 1fr}.stack.three{grid-template-columns:repeat(3,1fr)}}
+.wk{border-radius:14px;padding:14px;border:1px solid var(--line)}
+.wk .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.wk h3{margin:2px 0 6px;font-size:17px}
+.wk ul{margin:0;padding-left:18px;font-size:14px}
+.g{background:var(--goodbg)} .g .tag{color:var(--good)}
+.m{background:var(--midbg)} .m .tag{color:var(--mid)}
+.r{background:var(--badbg)} .r .tag{color:var(--bad)}
+.star{outline:3px solid var(--good);outline-offset:-3px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-weight:600;text-align:right}
+.fly h3{margin:0 0 8px;font-size:16px}
+.route{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.route:first-of-type{border-top:0}
+.route b{white-space:nowrap}
+.ok{color:var(--good)} .no{color:var(--bad)}
+.resort h3{margin:0;font-size:18px;line-height:1.3}
+.resort .sub{color:var(--muted);font-size:13px;margin:2px 0 10px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--goodbg);color:var(--good);vertical-align:middle;margin-left:4px}
+.badge.o{background:var(--midbg);color:var(--mid)} .badge.x{background:var(--badbg);color:var(--bad)}
+.costs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.cost{background:var(--bg);border-radius:10px;padding:8px 10px}
+.cost small{display:block;color:var(--muted);font-size:12px}
+.cost strong{font-size:16px}
+.lbl{font-size:12px;color:var(--muted);margin-top:6px}
+.bar{height:10px;border-radius:6px;background:var(--line);position:relative;margin:4px 0}
+.bar i{position:absolute;top:0;bottom:0;border-radius:6px}
+.bar i.km{background:var(--good)} .bar i.eur{background:var(--accent)}
+.bar .budget{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed var(--muted);border-right:2px dashed var(--muted)}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.resort ul{padding-left:18px;margin:8px 0 0;font-size:14px}
+details{margin-top:8px;font-size:14px}
+summary{cursor:pointer;color:var(--accent);min-height:36px;display:flex;align-items:center}
+.out{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.out:first-child{border-top:0}
+.foot{color:var(--muted);font-size:12px;margin-top:24px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>⛷️ Ski Trip<br>Jan–Feb 27</h1>
+  <p>Iteration 3 · 30 Sep 2026 · live flight and Booking.com prices · March ruled out</p>
+  <div class="pills"><span class="pill">Dublin + Leeds groups</span><span class="pill">7 nights</span><span class="pill">€1,000–€1,200 pp</span><span class="pill">Big areas only</span></div>
+</div></header>
+
+<div class="wrap">
+  <nav class="jump" aria-label="Sections">
+    <a href="#rec">Pick</a><a href="#weeks">Weeks</a><a href="#flights">Flights</a><a href="#resorts">Resorts</a><a href="#out">Ruled out</a>
+  </nav>
+
+  <section id="rec">
+    <div class="card rec">
+      <h3>Portes du Soleil (Morzine) · Sat 23 – Sat 30 Jan 2027</h3>
+      <p>Both groups fly <b>direct to Geneva on the same Saturday</b> (Dublin €135 Aer Lingus, Leeds €143 Jet2), then share a 1h15 transfer.</p>
+      <p><b>580 km across 12 linked resorts</b> in France and Switzerland, January snow, Avoriaz parks for the boarders, and Morzine / Folie Douce après.</p>
+      <p><b>≈ €755–€920 pp</b>, well inside budget, with room for a nicer apartment or Avoriaz ski-in/out.</p>
+    </div>
+  </section>
+
+  <h2 id="weeks">Which week?</h2>
+  <p class="note">Flights + bags, transfer, apartment ÷5 and pass, for Morzine.</p>
+  <div class="stack three">
+    <div class="wk g star">
+      <span class="tag">★ Best · Week A</span><h3>Sat 23 – 30 Jan</h3>
+      <dl class="kv"><dt>Dublin</dt><dd>€755–€907</dd><dt>Leeds</dt><dd>€763–€922</dd></dl>
+      <ul><li>DUB→GVA €135 direct, LBA→GVA €143</li><li>No big school holidays elsewhere</li><li>Cold, best snow, quiet pistes</li></ul>
+    </div>
+    <div class="wk g">
+      <span class="tag">Good · Week B</span><h3>Sat 30 Jan – 6 Feb</h3>
+      <dl class="kv"><dt>Dublin</dt><dd>€836–€919</dd><dt>Leeds</dt><dd>€748–€820</dd></dl>
+      <ul><li>Leeds €119, but Dublin's direct flight jumps to €386 (Sun €218)</li><li>Berlin holidays only</li></ul>
+    </div>
+    <div class="wk r">
+      <span class="tag">Avoid · pencilled-in week</span><h3>Sat 6 – 13 Feb</h3>
+      <dl class="kv"><dt>Dublin</dt><dd>€962–€1,086</dd><dt>Leeds</dt><dd>€970–€1,094</dd></dl>
+      <ul><li>Paris-zone French holidays start 6 Feb, plus Scotland, Bavaria and Flanders</li><li>Apartments +30–50%, flights €278–€299</li></ul>
+    </div>
+  </div>
+
+  <h2 id="flights">Flights, week A (return, cabin bag)</h2>
+  <p class="note">Google Flights, searched 30 Sep 2026. Add ~€40 for bags. Leeds Bradford only flies direct to Geneva, Chambéry and (in Jan) Salzburg.</p>
+  <div class="stack two">
+    <div class="card fly">
+      <h3>🇮🇪 Dublin group</h3>
+      <div class="route"><span>Geneva</span><b class="ok">€135 Aer Lingus</b></div>
+      <div class="route"><span>Turin</span><b class="ok">€153 Ryanair</b></div>
+      <div class="route"><span>Barcelona</span><b class="ok">€105 Aer Lingus</b></div>
+      <div class="route"><span>Grenoble (Sun)</span><b>€188 Ryanair</b></div>
+      <div class="route"><span>Verona</span><b>€202 Aer Lingus</b></div>
+      <div class="route"><span>Salzburg</span><b>€249 Ryanair</b></div>
+    </div>
+    <div class="card fly">
+      <h3>🏴 Leeds group</h3>
+      <div class="route"><span>Geneva (LBA)</span><b class="ok">€143 Jet2</b></div>
+      <div class="route"><span>Chambéry (LBA)</span><b>€217 Jet2</b></div>
+      <div class="route"><span>Salzburg (LBA)</span><b>€303 Jet2</b></div>
+      <div class="route"><span>Turin (via MAN)</span><b class="no">€163 + train</b></div>
+      <div class="route"><span>Barcelona (via MAN)</span><b class="no">€84 + train</b></div>
+      <div class="route"><span>Verona (via MAN)</span><b class="no">€81 + train</b></div>
+    </div>
+  </div>
+
+  <h2 id="resorts">Shortlist, week A</h2>
+  <p class="note">Green bar: km on one pass (0–1,200). Blue bar: € pp for the Dublin group; dashed lines show the €1,000–€1,200 budget. Hire is extra.</p>
+  <div class="stack two" id="list"></div>
+
+  <h2 id="out">Ruled out</h2>
+  <div class="card">
+    <div class="out"><span><b>Saalbach</b> 🇦🇹</span><span>€1,040–€1,380. January apartments €1,600+</span></div>
+    <div class="out"><span><b>Val Thorens</b> 🇫🇷</span><span>€1,050–€1,170. Stay in Les Menuires instead</span></div>
+    <div class="out"><span><b>Bansko / Borovets</b> 🇧🇬</span><span>75 / 58 km, only 5–6 km black</span></div>
+    <div class="out"><span><b>Livigno</b> 🇮🇹</span><span>115 km, 3.5 h transfer</span></div>
+    <div class="out"><span><b>March weeks</b></span><span>Ruled out by the group</span></div>
+  </div>
+
+  <h2>Extras</h2>
+  <div class="card">
+    <ul style="margin:0;padding-left:18px;font-size:15px">
+      <li><b>Book apartments first.</b> Italian and Andorran stock is thin (21–36 listings).</li>
+      <li>Fancy-dress day on Thursday. Spa day midweek, and bring flip-flops.</li>
+      <li>Lessons: 5 morning group lessons for those who need them.</li>
+      <li>Insurance with winter-sports and third-party cover. EHIC/GHIC is not enough.</li>
+      <li>January is cold. Bring proper layers, a buff and goggles for flat light.</li>
+    </ul>
+  </div>
+
+  <p class="foot">Estimates only. Flights and apartments are live prices from 30 Sep 2026 and will move. Apartment ranges run from the lowest to about the 8th-lowest price for 5 adults on Booking.com. Passes are 2026/27 official prices where published.</p>
+</div>
+
+<script>
+const R=[
+ {n:"Portes du Soleil · Morzine",c:"🇫🇷🇨🇭 12 linked resorts · pass €352",km:580,d:[755,907],l:[763,922],b:"Top pick",k:"",
+  p:["Both direct to Geneva, 1h15 transfer","580 km linked, 60 km black, Swiss Wall","Avoriaz: 4 snowparks + snowcross","Morzine bars + La Folie Douce Avoriaz"],
+  x:"Avoriaz ski-in/out: Dublin €882–€1,070, Leeds €890–€1,085. Apartments €1,523–€2,116 for 5."},
+ {n:"Les Deux Alpes",c:"🇫🇷 220 km + glacier · pass €333",km:220,d:[733,854],l:[741,869],b:"Value + party",k:"",
+  p:["Both via Geneva on Saturday, ~3 h transfer","Pass adds 2 days Alpe d'Huez + Serre Chevalier, Montgenèvre, Sestriere","2 km bar strip, Freestyle Land park + superpipe"],
+  x:"Apartments €625–€882 for 5 (172 listings). Dublin could also fly Sunday to Grenoble (€188), 1h45 transfer."},
+ {n:"3 Vallées · Les Menuires",c:"🇫🇷 600 km, 7 linked resorts · pass €421",km:600,d:[885,1001],l:[893,1016],b:"Biggest linked",k:"",
+  p:["Dublin via Geneva. Leeds via Geneva or Chambéry","Largest linked area in the world","Val Thorens nightlife 10 min up the valley"],
+  x:"Apartments €993–€1,223 for 5. Staying in Val Thorens pushes it to €1,050–€1,170."},
+ {n:"Sauze d'Oulx · Via Lattea",c:"🇮🇹 400 km, 6 resorts · pass ~€260–€300",km:400,d:[712,923],l:[752,954],b:"Most black runs",k:"o",
+  p:["Dublin direct to Turin (€153), 1h15 transfer","Leeds has to go via Manchester","Only 21 apartments listed, so book fast"],
+  x:"84 km of black runs (21%). Irish/British bar scene."},
+ {n:"Pas de la Casa · Andorra",c:"🇦🇩 215 km (308 on pass) · pass €396",km:308,d:[880,1065],l:[889,1093],b:"Known quantity",k:"o",
+  p:["Dublin → Barcelona €105, then a ~4 h bus","Leeds via Manchester","Only 22 apartments listed, from €1,215"],
+  x:"Après we know: Pas83, UFO, Paddy's."},
+ {n:"Canazei · Dolomiti Superski",c:"🇮🇹 1,200 km on one pass · pass €392",km:1200,d:[1088,1288],l:[997,1232],b:"Over budget",k:"x",
+  p:["Biggest pass in the Alps","January apartments €1,922+ for 5","Leeds via Manchester (Verona €81)"],
+  x:"Only worth it if the group stretches the budget."}
+];
+const MINC=650,MAXC=1350,pc=v=>Math.max(0,Math.min(100,(v-MINC)/(MAXC-MINC)*100)),pk=v=>Math.min(v,1200)/1200*100,f=v=>'€'+v.toLocaleString('en-IE');
+document.getElementById('list').innerHTML=R.map(r=>`
+ <article class="card resort">
+  <h3>${r.n}<span class="badge ${r.k}">${r.b}</span></h3>
+  <div class="sub">${r.c}</div>
+  <div class="costs">
+   <div class="cost"><small>🇮🇪 Dublin</small><strong>${f(r.d[0])}–${f(r.d[1])}</strong></div>
+   <div class="cost"><small>🏴 Leeds</small><strong>${f(r.l[0])}–${f(r.l[1])}</strong></div>
+  </div>
+  <div class="lbl">Pistes on one pass: <b>${r.km} km</b></div>
+  <div class="bar"><i class="km" style="left:0;width:${pk(r.km)}%"></i></div>
+  <div class="lbl">Cost vs budget (Dublin)</div>
+  <div class="bar"><span class="budget" style="left:${pc(1000)}%;width:${pc(1200)-pc(1000)}%"></span><i class="eur" style="left:${pc(r.d[0])}%;width:${pc(r.d[1])-pc(r.d[0])}%"></i></div>
+  <div class="scale"><span>€650</span><span>€1,350</span></div>
+  <ul>${r.p.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <details><summary>More detail</summary>${r.x}</details>
+ </article>`).join('');
+</script>
+</body>
+</html>

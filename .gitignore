@@ -1,0 +1,16 @@
+# Public repo: only the hosted site and its build files are tracked.
+# Research, earlier iterations and chat notes contain friends' personal
+# details and stay local only.
+*
+!.gitignore
+!.gitattributes
+!.dockerignore
+!Dockerfile
+!README.md
+!CLAUDE.md
+!site/
+!site/**
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
