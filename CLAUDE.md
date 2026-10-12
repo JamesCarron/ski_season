@@ -26,6 +26,7 @@ Group ski trip planning (Dublin group + Leeds group, ~7–10 people). Source cha
     - Redeploy check: after `up -d --build`, Traefik returns 404 for ~30 s until the container is healthy, and Cloudflare caches 404s for images for ~3 min. Wait for `healthy` plus ~30 s before curling the image URLs.
     - Chrome throttles timers in background tabs, so test async UI with synchronous DOM checks rather than setTimeout loops.
   - Iteration 4 (UCPA all-inclusive packages, January): `ski_trip_ucpa_jan_27.html` / `ski_trip_ucpa_jan_27_research.md`. Companion page to iteration 3, not a replacement. Not hosted yet.
+  - Iteration 5 (DIY, three weeks: Sat 30 Jan, 6 Feb, 13 Feb; prices 13/10/2026): `ski_trip_feb_27.html` / `ski_trip_feb_27_research.md`. **Current DIY plan, hosted as `site/index.html`** (replaced iteration 3 there; iteration 3 is still kept locally).
   - `ski_2027_plan.html` / `.md` are the original working files (identical to the March copies). Keep them.
 - Other research to keep: `andorra_pricing.md` (GBP, March-based), `whatsapp_chat_notes.md`, `whatsapp_poll_draft.md`.
 
@@ -41,5 +42,6 @@ Group ski trip planning (Dublin group + Leeds group, ~7–10 people). Source cha
 - Budget **€1,000–€1,200 pp** for flights + transfer + accommodation + 6-day pass. Hire, lessons, food and drink are extra.
 - Two groups: **Dublin** and **Leeds Bradford**. Leeds Bradford only flies direct to Geneva and Chambéry (plus Salzburg in January); otherwise the Leeds group goes via Manchester. James may fly from Zurich (low priority).
 - Big areas only (≥ ~200 km linked or multi-resort pass). Bulgaria is ruled out (too small).
-- Dates: late Jan / early Feb 2027. **March is ruled out.** Avoid 6–13 Feb (French Zone C + Scotland + Bavaria holidays) and 13–20 Feb (Irish mid-term / English half-term).
+- Dates: the group is focusing on **Sat 30 Jan, 6 Feb and 13 Feb 2027** (as of 13/10/2026). **March is ruled out.** 6 Feb clashes with French Zone C, Scotland and Bavaria holidays; 13 Feb is Irish mid-term + English half-term (peak). On 6 and 13 Feb the Leeds group is better off via Manchester (Leeds Bradford → Geneva €298 / €637).
+- The UCPA pages are a **separate, finished project**. Don't touch them when working on the DIY plan.
 - Prices are estimates from live Google Flights / Booking.com searches. Always state the search date.
