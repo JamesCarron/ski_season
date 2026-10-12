@@ -18,7 +18,12 @@ Group ski trip planning (Dublin group + Leeds group, ~7–10 people). Source cha
 - Each plan iteration gets its own HTML summary. **Never overwrite or delete an earlier iteration or its research.**
 - Naming: `ski_trip_<period>_27.html` for the summary, and `ski_trip_<period>_27_research.md` for the full data and sources.
   - Iteration 1–2 (March weeks): `ski_trip_march_27.html` / `ski_trip_march_27_research.md`. March was later ruled out by the group.
-  - Iteration 3 (late Jan / early Feb): `ski_trip_jan_feb_27.html` / `ski_trip_jan_feb_27_research.md` (current)
+  - Iteration 3 (late Jan / early Feb, DIY): `ski_trip_jan_feb_27.html` / `ski_trip_jan_feb_27_research.md` (current DIY plan, hosted)
+  - UCPA options (separate effort, UCPA-only, travel from Dublin + Zurich): `ski_trip_ucpa_options_27.html` (full version) + `ski_trip_ucpa_options_27_research.md`. The mockup is kept as `ski_trip_ucpa_options_mockup.html`. Don't mix DIY or Leeds content into this effort.
+    - Piste map viewer loads full-resolution JPEGs from `maps/` (rendered from skimap.org originals). It shows the skimap preview first, then swaps in the full image. Zoom is capped at native resolution.
+    - **Hosted** at https://ski.jamescarron.cloud/ucpa_2027/ (decided 2026-10-13). The published copy is `site/ucpa_2027/index.html` + `site/ucpa_2027/maps/*.jpg`. When the working file `ski_trip_ucpa_options_27.html` changes, copy it to `site/ucpa_2027/index.html`, grep for names, commit, then redeploy (README).
+    - Chrome throttles timers in background tabs, so test async UI with synchronous DOM checks rather than setTimeout loops.
+  - Iteration 4 (UCPA all-inclusive packages, January): `ski_trip_ucpa_jan_27.html` / `ski_trip_ucpa_jan_27_research.md`. Companion page to iteration 3, not a replacement. Not hosted yet.
   - `ski_2027_plan.html` / `.md` are the original working files (identical to the March copies). Keep them.
 - Other research to keep: `andorra_pricing.md` (GBP, March-based), `whatsapp_chat_notes.md`, `whatsapp_poll_draft.md`.
 

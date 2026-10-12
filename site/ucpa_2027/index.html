@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b3d91">
+<meta name="robots" content="noindex, nofollow">
+<title>UCPA Options Jan 27</title>
+<style>
+:root{
+  --bg:#f4f7fb; --card:#ffffff; --ink:#132033; --muted:#5b6b80; --line:#dde4ee;
+  --accent:#1f6feb; --good:#1a7f4b; --goodbg:#e3f5ea; --mid:#9a6700; --midbg:#fff4d6; --bad:#b42318;
+  --easy:#2f6fdb; --inter:#d64545; --hard:#1b1f27;
+  --hero1:#0b3d91; --hero2:#3aa0ff; --shade:rgba(8,14,24,.97);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1420; --card:#152032; --ink:#e7eef8; --muted:#9fb0c6; --line:#26354c;
+    --accent:#6aa8ff; --good:#5fd394; --goodbg:#133226; --mid:#f2c14e; --midbg:#352a0e; --bad:#ff8a80;
+    --easy:#5b93f0; --inter:#f06a6a; --hard:#c9d3e0;
+    --hero1:#0a2350; --hero2:#1c5fb0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1420; --card:#152032; --ink:#e7eef8; --muted:#9fb0c6; --line:#26354c;
+  --accent:#6aa8ff; --good:#5fd394; --goodbg:#133226; --mid:#f2c14e; --midbg:#352a0e; --bad:#ff8a80;
+  --easy:#5b93f0; --inter:#f06a6a; --hard:#c9d3e0;
+  --hero1:#0a2350; --hero2:#1c5fb0;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-wrap:anywhere}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 40px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+header{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:26px 0 20px;margin-bottom:16px}
+h1{margin:0;font-size:clamp(26px,7vw,40px);font-weight:800;line-height:1.15}
+header p{margin:6px 0 0;opacity:.92;font-size:14px}
+h2{font-size:20px;margin:24px 0 10px}
+.note{color:var(--muted);font-size:13px;margin:-4px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stack{display:grid;gap:12px}
+@media (min-width:760px){.stack.two{grid-template-columns:1fr 1fr}}
+.travel h3{margin:0 0 8px;font-size:16px}
+.leg{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.leg:first-of-type{border-top:0}
+.leg b{display:block}
+.rec{display:inline-block;font-size:12px;font-weight:700;color:var(--good);background:var(--goodbg);border-radius:99px;padding:1px 8px;margin-left:4px}
+.sortbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.sortbar button,.expandall{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px;min-height:40px;cursor:pointer}
+.sortbar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.opt h3{margin:0;font-size:18px;line-height:1.3}
+.opt .sub{color:var(--muted);font-size:13px;margin:2px 0 10px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 0 8px}
+.num{background:var(--bg);border-radius:10px;padding:8px}
+.num small{display:block;color:var(--muted);font-size:12px}
+.num strong{font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:2px 8px;color:var(--muted)}
+.chip.warn{border-color:var(--mid);color:var(--mid)}
+.actions{display:flex;gap:8px;margin-top:12px}
+.btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-size:15px;font-weight:600;min-height:44px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer;text-decoration:none}
+details.more{margin-top:10px;border-top:1px solid var(--line)}
+details.more>summary{cursor:pointer;color:var(--accent);font-weight:600;min-height:44px;display:flex;align-items:center;justify-content:space-between;list-style:none}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"＋";font-size:18px}
+details.more[open]>summary::after{content:"－"}
+.sec{margin:6px 0 14px}
+.sec h4{margin:0 0 6px;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)} .kv dd{margin:0}
+.week{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:14px}
+.week.na{opacity:.55}
+.week .wh{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+.week .wl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin-top:4px}
+.week .wl span:nth-child(odd){color:var(--muted)}
+.diff{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:4px 0}
+.diff i{display:block;height:100%}
+.legend{display:flex;gap:12px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.stars{letter-spacing:1px;color:var(--mid)}
+.foot{color:var(--muted);font-size:12px;margin-top:24px}
+a{color:var(--accent)}
+/* piste map viewer */
+dialog.map{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:0;border:0;background:var(--shade);color:#fff;overflow:hidden}
+dialog.map::backdrop{background:var(--shade)}
+.mapbar{display:flex;align-items:center;gap:6px;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:rgba(8,14,24,.95)}
+.mapbar h4{margin:0;flex:1;font-size:15px;line-height:1.2;min-width:0}
+.mapbar button,.mapbar a{font:inherit;font-size:15px;color:#fff;background:rgba(255,255,255,.14);border:0;border-radius:10px;min-height:40px;min-width:40px;padding:0 10px;display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer}
+.mapstatus{font-size:12px;opacity:.85;padding:4px 12px 6px;background:rgba(8,14,24,.95)}
+.mapview{position:absolute;left:0;right:0;bottom:0;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;overscroll-behavior:contain}
+.mapview img{display:block;margin:0 auto;height:auto;max-width:none;background:#fff;user-select:none;-webkit-user-drag:none}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>UCPA options<br>January 2027</h1>
+  <p>Ski Half Time Instruction weeks · intermediate · prices per person</p>
+</div></header>
+
+<div class="wrap">
+  <h2>Getting there</h2>
+  <p class="note">Return fares, Saturday to Saturday, from Google Flights on 12 Oct 2026. The fares for each week are inside each option.</p>
+  <div class="stack two">
+    <div class="card travel">
+      <h3>🇮🇪 From Dublin</h3>
+      <div class="leg"><b>Geneva</b>For every option except Serre Chevalier. Aer Lingus / SWISS direct, or 1-stop (≤ 6 h)</div>
+      <div class="leg"><b>Turin</b>For Serre Chevalier. Ryanair / Aer Lingus direct, or 1-stop</div>
+    </div>
+    <div class="card travel">
+      <h3>🇨🇭 From Zurich</h3>
+      <div class="leg"><b>Train to Geneva Airport <span class="rec">Recommended</span></b>Direct, ~3 h, from ~CHF 25 (Supersaver) to ~CHF 90 each way. Flying is €198 return every week and no faster door to door</div>
+      <div class="leg"><b>Serre Chevalier: fly to Turin</b>1-stop, ~3–6 h, €192–€262 return. The train is ~8 h via Milan and Oulx</div>
+    </div>
+  </div>
+
+  <h2>Compare the options</h2>
+  <div class="sortbar" role="group" aria-label="Sort options">
+    <button type="button" data-sort="price" aria-pressed="true">Price</button>
+    <button type="button" data-sort="km" aria-pressed="false">Most pistes</button>
+    <button type="button" data-sort="black" aria-pressed="false">Most black runs</button>
+    <button type="button" data-sort="apres" aria-pressed="false">Après</button>
+    <button type="button" data-sort="snow" aria-pressed="false">Snow-sure</button>
+  </div>
+  <button type="button" class="expandall" id="expandAll" aria-pressed="false" style="margin:0 0 12px">Expand all</button>
+  <div class="stack two" id="list"></div>
+
+  <p class="foot">
+    UCPA prices: ucpa.co.uk, 12 Oct 2026, per person in EUR for 1 place. Every option includes 7 nights, full board, lift pass, ski hire and 12 h of half-day lessons. Travel and drinks are extra.
+    Flights: Google Flights, 12 Oct 2026, return, cabin bag only. "1-stop" is the lowest fare with a total journey of 6 h or less.
+    Ski areas: skiresort.com. Après rank is skiresort.com's ranking of French ski areas (ties share a rank).
+    Centre ratings (comfort, resort charm, snow-sure, out of 5): action-outdoors.co.uk (UCPA UK).
+    Piste maps: skimap.org, full-resolution renders of the 2024/25 originals.
+  </p>
+</div>
+
+<dialog class="map" id="map" aria-labelledby="mapTitle">
+  <div class="mapbar" id="mapBar">
+    <h4 id="mapTitle">Piste map</h4>
+    <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+    <button type="button" id="zoomFit" aria-label="Fit to screen">Fit</button>
+    <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+    <button type="button" id="closeBtn" aria-label="Close map">✕</button>
+  </div>
+  <div class="mapstatus" id="mapStatus"></div>
+  <div class="mapview" id="mapView"><img id="mapImg" alt="" draggable="false"></div>
+</dialog>
+
+<script>
+const WEEKS=['2 Jan','9 Jan','16 Jan','23 Jan','30 Jan'];
+/* Return fares, 12 Oct 2026. d = direct, s = lowest with total journey <= 6 h */
+const FL={
+ dubGva:[{d:442,s:273},{d:402,s:198},{d:201,s:165},{d:213,s:150},{d:432,s:193}],
+ dubTrn:[{d:604,s:312},{d:578,s:265},{d:146,s:146},{d:159,s:159},{d:302,s:287}],
+ zrhTrn:[{s:249},{s:203},{s:192},{s:224},{s:262}]
+};
+const MAPS={
+ tv:{t:"Tignes – Val d'Isère",full:"maps/tignes-val-disere.jpg",prev:"https://files.skimap.org/m1tsowo3h05gb8yoanfwe2mwycw1",src:"https://skimap.org/skimaps/view/40949"},
+ v3:{t:"Les 3 Vallées",full:"maps/3-vallees.jpg",prev:"https://files.skimap.org/sfmdlmc76xtrhowsbxchewk09xsw",src:"https://skimap.org/skimaps/view/34989"},
+ pd:{t:"Paradiski (La Plagne + Les Arcs)",full:"maps/paradiski.jpg",prev:"https://files.skimap.org/xgsb9ybchzc3wc9v897isd89h210",src:"https://skimap.org/skimaps/view/36395"},
+ sc:{t:"Serre Chevalier",full:"maps/serre-chevalier.jpg",prev:"https://files.skimap.org/1qw48a6j1qryxwi91c613nbq364z",src:"https://skimap.org/skimaps/view/32005"},
+ gm:{t:"Grand Massif (Flaine)",full:"maps/grand-massif.jpg",prev:"https://files.skimap.org/4k36l9ha640d57pbcuk5szxrjgsj",src:"https://skimap.org/skimaps/view/34912"},
+ gt:{t:"Argentière – Grands Montets",full:"maps/argentiere-grands-montets.jpg",prev:"https://files.skimap.org/gpctv741m8jwf8u0rd1cxbfv9lcx",src:"https://skimap.org/skimaps/view/44284"}
+};
+const AREA={
+ tv:{n:"Tignes–Val d'Isère",km:300,e:165,i:75,h:60,alt:"1,550–3,456 m",vert:"1,906 m",lifts:80,parks:"DC Park Tignes, Val d'Isère Snowpark",apres:1},
+ v3:{n:"Les 3 Vallées",km:600,e:336,i:204,h:60,alt:"1,100–3,230 m",vert:"2,130 m",lifts:159,parks:"VT Park (Val Thorens), Les Menuires, Méribel",apres:1},
+ lp:{n:"La Plagne",km:225,e:139,i:59,h:27,alt:"1,207–3,167 m",vert:"1,960 m",lifts:74,parks:"Snowpark de Belle Plagne (halfpipe, boardercross)",apres:3},
+ la:{n:"Les Arcs",km:200,e:104,i:70,h:26,alt:"1,200–3,226 m",vert:"2,026 m",lifts:52,parks:"Freestyle Park Les Arcs",apres:8},
+ sc:{n:"Serre Chevalier",km:250,e:138,i:80,h:32,alt:"1,200–2,800 m",vert:"1,600 m",lifts:59,parks:"Snowpark + boarder/ski cross",apres:8},
+ gm:{n:"Grand Massif",km:265,e:135,i:95,h:35,alt:"697–2,480 m",vert:"1,783 m",lifts:63,parks:"Jam Park Flaine",apres:23},
+ gt:{n:"Grands Montets",km:29,e:6,i:9,h:14,alt:"1,252–2,765 m",vert:"1,513 m",lifts:8,parks:"Snowpark Lognan + boardercross",apres:23}
+};
+/* r = ratings [comfort, charm, snow] out of 5 (null = not published) */
+const R=[
+ {n:"Tignes",c:"Val Claret, 2,100 m",area:"tv",map:"tv",air:"geneva",tr:"Geneva ~3h30 (also Chambéry)",
+  p:[1083,1164,1224,1264,1283],y:null,r:[3,3,5],
+  pass:"Tignes–Val d'Isère (not stated on UCPA's UK page)",passWarn:true,
+  centre:["Foot of the Grande Motte glacier, short walk to the main lift. Ski back to the door with good snow","4-bed and twin rooms. Bathroom shared between 2 rooms","Bar and social areas"]},
+ {n:"Val d'Isère",c:"3 min walk from the town centre",area:"tv",map:"tv",air:"geneva",tr:"Geneva / Lyon / Grenoble ~3h30",
+  p:[1083,1164,1224,1264,1283],y:null,r:[1,5,5],
+  pass:"Tignes–Val d'Isère (not stated on UCPA's UK page)",passWarn:true,
+  centre:["Bus to the slopes every 10 min","2-bed (bunk), 4-bed and 8-bed rooms. Shared bathrooms on each floor","Described by UCPA as very basic. Renovation delayed"]},
+ {n:"Val Thorens",c:"In the middle of the pistes, 2,300 m",area:"v3",map:"v3",air:"geneva",tr:"Geneva ~3h30 (also Grenoble)",
+  p:[null,1174,1234,1274,1294],y:null,r:[4,3,5],
+  pass:"Les 3 Vallées (confirmed on UCPA product page)",passWarn:false,
+  centre:["Ski-in/out. Circular building with 360° views","4-bed rooms with shower and sink, toilets shared between 2 rooms. En-suite twins available","Bar and own nightclub"]},
+ {n:"La Plagne Centre",c:"La Plagne Centre village",area:"lp",map:"pd",air:"geneva",tr:"Geneva ~3h30 (Saturday transfers)",
+  p:[1094,1174,1234,1274,1294],y:[1159,1239,1299,1339,null],r:[5,4,3],
+  pass:"La Plagne (Paradiski extension not stated)",passWarn:true,
+  centre:["Ski-through building, with a ski tunnel through the centre","4-bed and twin rooms, all en-suite. Recently renovated (top UCPA comfort rating)","Bar, games room and small nightclub"]},
+ {n:"La Plagne 1800",c:"Listed separately by UCPA",area:"lp",map:"pd",air:"geneva",tr:"Geneva ~3h30 (Saturday transfers)",
+  p:[null,null,1094,1134,1154],y:null,r:[5,4,3],
+  pass:"La Plagne only (confirmed on UCPA UK page)",passWarn:false,
+  centre:["Ski through the middle of the centre","3–4-bed rooms, limited twins","Bar, buffet restaurant, Wi-Fi in common areas","UCPA's page describes the centre as being in La Plagne Centre. Confirm the building when booking"]},
+ {n:"Les Arcs",c:"Arc 1600",area:"la",map:"pd",air:"geneva",tr:"Geneva ~3h15",
+  p:[1004,1083,null,null,1204],y:null,r:[3,null,4],
+  pass:"Les Arcs (Paradiski extension not stated)",passWarn:true,
+  centre:["Ski-in/out, 460 beds","4-bed rooms, bathrooms on each floor","3 bars, 3 buffet restaurants","Arc 1800 has the busiest nightlife in Les Arcs"]},
+ {n:"Serre Chevalier",c:"Villeneuve, at the main lift hub",area:"sc",map:"sc",air:"turin",tr:"Turin ~2h30 (also Grenoble)",
+  p:[1024,1104,1164,1204,1224],y:null,r:[4,5,3],
+  pass:"Serre Chevalier (whole area)",passWarn:false,
+  centre:["Ski-in/out. Heated outdoor pool and sun deck","4, 5 and 6-bed rooms plus twins. En-suite shower and sink, shared toilets","Bar and buffet restaurant with terrace","Turin shuttles arrive 10:00–21:00 on Saturdays"]},
+ {n:"Flaine",c:"Town centre",area:"gm",map:"gm",air:"geneva",tr:"Geneva ~1h15",
+  p:[1024,1104,1164,null,1224],y:null,r:[5,3,3],
+  pass:"Grand Massif (confirmed)",passWarn:false,
+  centre:["Close to the slopes via pedestrian lifts (not ski-in/out)","4-bed and twin rooms, all en-suite","Bar with a huge fireplace"]},
+ {n:"Argentière",c:"On the high street",area:"gt",map:"gt",air:"geneva",tr:"Geneva ~1h30 (train station next to the centre)",
+  p:[null,1083,1144,1183,1204],y:[null,1149,1209,1249,1269],r:[3,5,4],
+  pass:"Chamonix valley areas. Only Grands Montets is linked to the centre; the others are by bus or train",passWarn:true,
+  centre:["5 min walk to the Grands Montets lift","4, 5 and 6-bed rooms plus twins. Communal bathrooms on each floor. Refurbished 2013","Large bar and dining area"]}
+];
+const f=v=>v?'€'+v.toLocaleString('en-IE'):'–';
+const first=r=>{const i=r.p.findIndex(Boolean);return i};
+const low=r=>Math.min(...r.p.filter(Boolean));
+const stars=n=>n==null?'<span class="note" style="margin:0">not published</span>':'<span class="stars" aria-label="'+n+' out of 5">'+'★'.repeat(n)+'☆'.repeat(5-n)+'</span>';
+function weekRows(r){
+ return WEEKS.map((w,i)=>{
+  const up=r.p[i];
+  if(!up) return `<div class="week na"><div class="wh"><span>Sat ${w}</span><span>Not available</span></div></div>`;
+  let dub,zrh;
+  if(r.air==='turin'){const x=FL.dubTrn[i];dub=x.d===x.s?`${f(x.d)} direct (Turin)`:`${f(x.d)} direct · ${f(x.s)} 1-stop (Turin)`;zrh=`${f(FL.zrhTrn[i].s)} 1-stop to Turin`;}
+  else{const x=FL.dubGva[i];dub=`${f(x.d)} direct · ${f(x.s)} 1-stop (Geneva)`;zrh='Train to Geneva Airport, CHF 25–90 each way';}
+  const yoga=r.y&&r.y[i]?`<span>Yoga version</span><span>${f(r.y[i])}</span>`:'';
+  return `<div class="week"><div class="wh"><span>Sat ${w}</span><span>${f(up)}</span></div>
+   <div class="wl"><span>🇮🇪 Flight</span><span>${dub}</span><span>🇨🇭 Travel</span><span>${zrh}</span>${yoga}</div></div>`;
+ }).join('');
+}
+function card(r){
+ const a=AREA[r.area], tot=a.e+a.i+a.h;
+ return `<article class="card opt" id="opt-${r.n.replace(/\W+/g,'-').toLowerCase()}">
+  <h3>${r.n}</h3>
+  <div class="sub">${r.c} · ${r.tr}</div>
+  <div class="nums">
+   <div class="num"><small>UCPA from</small><strong>${f(low(r))}</strong></div>
+   <div class="num"><small>Pistes</small><strong>${a.km} km</strong></div>
+   <div class="num"><small>Black</small><strong>${a.h} km</strong></div>
+  </div>
+  <div class="chips">
+   <span class="chip">${r.p.filter(Boolean).length} of 5 weeks</span>
+   <span class="chip">Après #${a.apres}</span>
+   <span class="chip">Snow-sure ${r.r[2]}/5</span>
+   ${r.passWarn?'<span class="chip warn">Check pass area</span>':''}
+  </div>
+  <div class="actions"><button class="btn" type="button" data-map="${r.map}">🗺️ Piste map</button></div>
+  <details class="more"><summary>More detail</summary>
+   <div class="sec"><h4>Weeks and travel</h4>${weekRows(r)}</div>
+   <div class="sec"><h4>Ski area</h4>
+    <dl class="kv">
+     <dt>Pass</dt><dd>${r.pass}</dd>
+     <dt>Area</dt><dd>${a.n}, ${a.km} km, ${a.lifts} lifts</dd>
+     <dt>Altitude</dt><dd>${a.alt} (vertical ${a.vert})</dd>
+     <dt>Parks</dt><dd>${a.parks}</dd>
+     <dt>Après</dt><dd>#${a.apres} in France</dd>
+    </dl>
+    <div class="diff" aria-hidden="true"><i style="width:${a.e/tot*100}%;background:var(--easy)"></i><i style="width:${a.i/tot*100}%;background:var(--inter)"></i><i style="width:${a.h/tot*100}%;background:var(--hard)"></i></div>
+    <div class="legend"><span><b style="background:var(--easy)"></b>Easy ${a.e} km</span><span><b style="background:var(--inter)"></b>Intermediate ${a.i} km</span><span><b style="background:var(--hard)"></b>Difficult ${a.h} km</span></div>
+   </div>
+   <div class="sec"><h4>Centre</h4>
+    <dl class="kv">
+     <dt>Comfort</dt><dd>${stars(r.r[0])}</dd>
+     <dt>Resort charm</dt><dd>${stars(r.r[1])}</dd>
+     <dt>Snow-sure</dt><dd>${stars(r.r[2])}</dd>
+    </dl>
+    <ul style="margin:8px 0 0;padding-left:18px;font-size:14px">${r.centre.map(x=>`<li>${x}</li>`).join('')}</ul>
+   </div>
+  </details>
+ </article>`;
+}
+const sorts={price:(a,b)=>low(a)-low(b),km:(a,b)=>AREA[b.area].km-AREA[a.area].km,black:(a,b)=>AREA[b.area].h-AREA[a.area].h,apres:(a,b)=>AREA[a.area].apres-AREA[b.area].apres,snow:(a,b)=>b.r[2]-a.r[2]};
+const list=document.getElementById('list');
+function render(key){
+ const open=new Set([...list.querySelectorAll('details.more[open]')].map(d=>d.closest('article').id));
+ list.innerHTML=[...R].sort(sorts[key]).map(card).join('');
+ list.querySelectorAll('article').forEach(a=>{if(open.has(a.id)) a.querySelector('details.more').open=true;});
+}
+document.querySelector('.sortbar').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-sort]'); if(!b) return;
+ document.querySelectorAll('.sortbar button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ render(b.dataset.sort);
+});
+const ea=document.getElementById('expandAll');
+ea.addEventListener('click',()=>{const on=ea.getAttribute('aria-pressed')!=='true';ea.setAttribute('aria-pressed',on);ea.textContent=on?'Collapse all':'Expand all';list.querySelectorAll('details.more').forEach(d=>d.open=on);});
+render('price');
+
+/* ---- piste map viewer: fit, +/− buttons, pinch, double-tap ---- */
+const dlg=document.getElementById('map'),view=document.getElementById('mapView'),img=document.getElementById('mapImg'),status=document.getElementById('mapStatus');
+let fitW=0,scale=1,natW=1,natH=1;
+function setStatus(h){status.innerHTML=h;layout();}
+function layout(){const top=document.getElementById('mapBar').offsetHeight+status.offsetHeight;view.style.top=top+'px';}
+function fitScale(){const vw=view.clientWidth,vh=view.clientHeight;return Math.min(vw/natW,vh/natH);}
+function apply(s,cx,cy){
+ const maxS=1; // never beyond the image's own resolution
+ const min=fitScale(); s=Math.max(min,Math.min(s,Math.max(maxS,min*1.01)));
+ const rx=cx==null?view.clientWidth/2:cx, ry=cy==null?view.clientHeight/2:cy;
+ const px=(view.scrollLeft+rx)/(natW*scale), py=(view.scrollTop+ry)/(natH*scale);
+ scale=s; img.style.width=Math.round(natW*s)+'px';
+ const padTop=Math.max(0,(view.clientHeight-natH*s)/2); img.style.marginTop=padTop+'px';
+ view.scrollLeft=px*natW*s-rx; view.scrollTop=py*natH*s-ry;
+}
+function fit(){scale=fitScale();img.style.width=Math.round(natW*scale)+'px';img.style.marginTop=Math.max(0,(view.clientHeight-natH*scale)/2)+'px';view.scrollLeft=0;view.scrollTop=0;}
+function openMap(key){
+ const m=MAPS[key];
+ document.getElementById('mapTitle').textContent=m.t;
+ dlg.showModal(); document.body.style.overflow='hidden';
+ setStatus('Loading full resolution… <a href="'+m.src+'" target="_blank" rel="noopener" style="color:#9cc3ff">Source</a>');
+ img.onload=null; img.src=m.prev; img.alt='Piste map of '+m.t;
+ img.onload=()=>{natW=img.naturalWidth;natH=img.naturalHeight;fit();};
+ const full=new Image();
+ full.onload=()=>{ if(!dlg.open) return; const frac=scale*natW; img.onload=null; img.src=m.full; natW=full.naturalWidth; natH=full.naturalHeight; scale=frac/natW; apply(scale); setStatus('Full resolution ('+natW.toLocaleString()+' px). Pinch, double-tap or use + / − to zoom. <a href="'+m.src+'" target="_blank" rel="noopener" style="color:#9cc3ff">Source</a>'); };
+ full.onerror=()=>{setStatus('Showing preview (full-resolution file not found). <a href="'+m.src+'" target="_blank" rel="noopener" style="color:#9cc3ff">Open original</a>');};
+ full.src=m.full;
+}
+list.addEventListener('click',e=>{const b=e.target.closest('[data-map]'); if(b) openMap(b.dataset.map);});
+document.getElementById('zoomIn').onclick=()=>apply(scale*1.6);
+document.getElementById('zoomOut').onclick=()=>apply(scale/1.6);
+document.getElementById('zoomFit').onclick=fit;
+function cleanup(){document.body.style.overflow='';img.onload=null;img.removeAttribute('src');}
+document.getElementById('closeBtn').onclick=()=>{dlg.close();cleanup();};
+dlg.addEventListener('close',cleanup);
+window.addEventListener('resize',()=>{if(dlg.open){layout();apply(scale);}});
+/* pinch + double-tap */
+const pts=new Map(); let pinch0=null, lastTap=0;
+view.addEventListener('pointerdown',e=>{pts.set(e.pointerId,e); if(pts.size===2){const [a,b]=[...pts.values()];pinch0={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),s:scale};}
+ if(e.pointerType!=='mouse'){const now=Date.now(); if(now-lastTap<300&&pts.size===1){dtz(e);} lastTap=now;}});
+function dtz(e){const r=view.getBoundingClientRect(); apply(scale>fitScale()*1.5?fitScale():scale*3,e.clientX-r.left,e.clientY-r.top);}
+view.addEventListener('dblclick',dtz);
+view.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return; pts.set(e.pointerId,e); if(pts.size===2&&pinch0){const [a,b]=[...pts.values()];const d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);const r=view.getBoundingClientRect();apply(pinch0.s*d/pinch0.d,(a.clientX+b.clientX)/2-r.left,(a.clientY+b.clientY)/2-r.top);}});
+['pointerup','pointercancel','pointerleave'].forEach(t=>view.addEventListener(t,e=>{pts.delete(e.pointerId); if(pts.size<2) pinch0=null;}));
+view.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();const r=view.getBoundingClientRect();apply(scale*(e.deltaY<0?1.15:1/1.15),e.clientX-r.left,e.clientY-r.top);},{passive:false});
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
 !.gitattributes
 !.dockerignore
 !Dockerfile
+!nginx.conf
 !README.md
 !CLAUDE.md
 !site/
