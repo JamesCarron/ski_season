@@ -122,7 +122,7 @@ dialog.map::backdrop{background:var(--shade)}
     <button type="button" data-sort="apres" aria-pressed="false">Après</button>
     <button type="button" data-sort="snow" aria-pressed="false">Snow-sure</button>
   </div>
-  <button type="button" class="expandall" id="expandAll" aria-pressed="false" style="margin:0 0 12px">Expand all</button>
+  <button type="button" class="expandall" id="expandAll" aria-pressed="false" style="margin:0 0 12px">Show all weeks and flights</button>
   <div class="stack two" id="list"></div>
 
   <p class="foot">
@@ -257,10 +257,7 @@ function card(r){
    ${r.passWarn?'<span class="chip warn">Check pass area</span>':''}
   </div>
   <div class="actions"><button class="btn" type="button" data-map="${r.map}">🗺️ Piste map</button></div>
-  <details class="more"><summary>More detail</summary>
-   <div class="sec"><h4>Airports (driving time)</h4><p style="margin:0;font-size:14px">${airports(r)}</p><p class="note" style="margin:4px 0 0">Private transfer times. UCPA shared Saturday buses take about an hour longer.</p></div>
-   <div class="sec"><h4>Weeks and travel</h4>${weekRows(r)}</div>
-   <div class="sec"><h4>Ski area</h4>
+   <div class="sec" style="margin-top:14px"><h4>Ski area</h4>
     <dl class="kv">
      <dt>Pass</dt><dd>${r.pass}</dd>
      <dt>Area</dt><dd>${a.n}, ${a.km} km, ${a.lifts} lifts</dd>
@@ -279,6 +276,9 @@ function card(r){
     </dl>
     <ul style="margin:8px 0 0;padding-left:18px;font-size:14px">${r.centre.map(x=>`<li>${x}</li>`).join('')}</ul>
    </div>
+   <div class="sec"><h4>Airports (driving time)</h4><p style="margin:0;font-size:14px">${airports(r)}</p><p class="note" style="margin:4px 0 0">Private transfer times. UCPA shared Saturday buses take about an hour longer.</p></div>
+  <details class="more"><summary>Weeks and flights</summary>
+   <div class="sec">${weekRows(r)}</div>
   </details>
  </article>`;
 }
@@ -295,7 +295,7 @@ document.querySelector('.sortbar').addEventListener('click',e=>{
  render(b.dataset.sort);
 });
 const ea=document.getElementById('expandAll');
-ea.addEventListener('click',()=>{const on=ea.getAttribute('aria-pressed')!=='true';ea.setAttribute('aria-pressed',on);ea.textContent=on?'Collapse all':'Expand all';list.querySelectorAll('details.more').forEach(d=>d.open=on);});
+ea.addEventListener('click',()=>{const on=ea.getAttribute('aria-pressed')!=='true';ea.setAttribute('aria-pressed',on);ea.textContent=on?'Hide all weeks and flights':'Show all weeks and flights';list.querySelectorAll('details.more').forEach(d=>d.open=on);});
 render('price');
 
 /* ---- piste map viewer: fit, +/− buttons, pinch, double-tap ---- */
