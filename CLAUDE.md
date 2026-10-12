@@ -27,6 +27,8 @@ Group ski trip planning (Dublin group + Leeds group, ~7–10 people). Source cha
     - Chrome throttles timers in background tabs, so test async UI with synchronous DOM checks rather than setTimeout loops.
   - Iteration 4 (UCPA all-inclusive packages, January): `ski_trip_ucpa_jan_27.html` / `ski_trip_ucpa_jan_27_research.md`. Companion page to iteration 3, not a replacement. Not hosted yet.
   - Iteration 5 (DIY, three weeks: Sat 30 Jan, 6 Feb, 13 Feb; prices 13/10/2026): `ski_trip_feb_27.html` / `ski_trip_feb_27_research.md`. **Current DIY plan, hosted as `site/2027/index.html` at ski.jamescarron.cloud/2027/** (replaced iteration 3 there; iteration 3 is still kept locally).
+    - Layout (13/10/2026): each resort card shows the facts and a piste-map preview first. Weeks, totals, flights and apartments sit in the card's "More detail". The page-wide week and flight comparisons are collapsed blocks. The previous layout is kept as `ski_trip_feb_27_v1.html`.
+    - Piste maps live in `site/2027/maps/` (full ≤6000 px) and `site/2027/maps/thumb/` (900 px previews; Les 2 Alpes is portrait, at 600 px). Tapping a preview opens the full JPEG in a new tab. Sources on skimap.org: Portes du Soleil 38554, Les 2 Alpes 35289, Grandvalira 38216 (PDF p1), Via Lattea 36684 (PDF p2, cropped to the left 65.5% to drop the lift table), 3 Vallées 34989. The working file uses `MAPDIR='site/2027/maps/'`; the hosted copy replaces it with `'maps/'`.
   - `ski_2027_plan.html` / `.md` are the original working files (identical to the March copies). Keep them.
 - Other research to keep: `andorra_pricing.md` (GBP, March-based), `whatsapp_chat_notes.md`, `whatsapp_poll_draft.md`.
 
