@@ -98,17 +98,19 @@ dialog.map::backdrop{background:var(--shade)}
 
 <div class="wrap">
   <h2>Getting there</h2>
-  <p class="note">Return fares, Saturday to Saturday, from Google Flights on 12 Oct 2026. The fares for each week are inside each option.</p>
+  <p class="note">Each option lists the airports to fly into, with driving time, and shows the best-value airport for each week. Return fares, Saturday to Saturday, from Google Flights on 12–13 Oct 2026.</p>
   <div class="stack two">
     <div class="card travel">
       <h3>🇮🇪 From Dublin</h3>
-      <div class="leg"><b>Geneva</b>For every option except Serre Chevalier. Aer Lingus / SWISS direct, or 1-stop (≤ 6 h)</div>
-      <div class="leg"><b>Turin</b>For Serre Chevalier. Ryanair / Aer Lingus direct, or 1-stop</div>
+      <div class="leg"><b>Tignes, Val d'Isère, Val Thorens, La Plagne, Les Arcs</b>Geneva, Lyon or Grenoble, 2–3 h drive. Geneva is the best value in most weeks, Lyon in the week of 30 Jan. Grenoble (Ryanair direct) has the shortest drive to Les Arcs and La Plagne but costs more. Chambéry is closest but has no Dublin flights</div>
+      <div class="leg"><b>Serre Chevalier</b>Turin (~2 h drive) is the best value every week. Grenoble is the same distance but costs more</div>
+      <div class="leg"><b>Flaine, Argentière</b>Geneva (1h15–1h30 drive)</div>
     </div>
     <div class="card travel">
       <h3>🇨🇭 From Zurich</h3>
-      <div class="leg"><b>Train to Geneva Airport <span class="rec">Recommended</span></b>Direct, ~3 h, from ~CHF 25 (Supersaver) to ~CHF 90 each way. Flying is €198 return every week and no faster door to door</div>
-      <div class="leg"><b>Serre Chevalier: fly to Turin</b>1-stop, ~3–6 h, €192–€262 return. The train is ~8 h via Milan and Oulx</div>
+      <div class="leg"><b>Argentière: direct train <span class="rec">Recommended</span></b>Via Martigny and the Mont-Blanc Express, ~4–4.5 h. The station is next to the centre, so no transfer is needed</div>
+      <div class="leg"><b>Tarentaise resorts and Flaine: train to Geneva Airport <span class="rec">Recommended</span></b>Direct, ~3 h, CHF 25–90 each way, then the same transfer as the Dublin group. Trains all the way to Moûtiers or Bourg-St-Maurice take 6h40–7h15, which is no quicker</div>
+      <div class="leg"><b>Serre Chevalier: fly to Turin</b>1-stop, €192–€262 return, then ~2 h drive. The train is ~8 h via Milan and Oulx</div>
     </div>
   </div>
 
@@ -125,7 +127,7 @@ dialog.map::backdrop{background:var(--shade)}
 
   <p class="foot">
     UCPA prices: ucpa.co.uk, 12 Oct 2026, per person in EUR for 1 place. Every option includes 7 nights, full board, lift pass, ski hire and 12 h of half-day lessons. Travel and drinks are extra.
-    Flights: Google Flights, 12 Oct 2026, return, cabin bag only. "1-stop" is the lowest fare with a total journey of 6 h or less.
+    Flights: Google Flights, 12–13 Oct 2026, return, cabin bag only. "1-stop" is the lowest fare with a total journey of 6 h or less. Driving times: topsnowtravel.com, alpinefleet.com, j2ski.com (private transfer). Chambéry is left out because there are no Dublin flights.
     Ski areas: skiresort.com. Après rank is skiresort.com's ranking of French ski areas (ties share a rank).
     Centre ratings (comfort, resort charm, snow-sure, out of 5): action-outdoors.co.uk (UCPA UK).
     Piste maps: skimap.org, full-resolution renders of the 2024/25 originals.
@@ -146,12 +148,18 @@ dialog.map::backdrop{background:var(--shade)}
 
 <script>
 const WEEKS=['2 Jan','9 Jan','16 Jan','23 Jan','30 Jan'];
-/* Return fares, 12 Oct 2026. d = direct, s = lowest with total journey <= 6 h */
-const FL={
- dubGva:[{d:442,s:273},{d:402,s:198},{d:201,s:165},{d:213,s:150},{d:432,s:193}],
- dubTrn:[{d:604,s:312},{d:578,s:265},{d:146,s:146},{d:159,s:159},{d:302,s:287}],
- zrhTrn:[{s:249},{s:203},{s:192},{s:224},{s:262}]
+/* Return fares from Dublin, Sat-Sat, Google Flights 12-13 Oct 2026.
+   d = lowest direct fare, s = lowest fare with total journey <= 6 h (null = none) */
+const AP={
+ GVA:{n:"Geneva",d:[442,402,201,213,432],s:[273,198,165,150,193]},
+ LYS:{n:"Lyon",d:[666,666,366,301,531],s:[369,226,206,163,163]},
+ GNB:{n:"Grenoble",d:[597,574,287,251,428],s:[null,null,null,null,null]},
+ TRN:{n:"Turin",d:[604,578,146,159,302],s:[312,265,146,159,287]}
 };
+const ZRH_TRN=[249,203,192,224,262]; /* Zurich-Turin, 1-stop, return */
+/* best fare at an airport in week i */
+function fareAt(code,i){const a=AP[code],d=a.d[i],s=a.s[i];
+ if(s!=null&&s<d) return {p:s,k:'1-stop'}; return {p:d,k:'direct'};}
 const MAPS={
  tv:{t:"Tignes – Val d'Isère",full:"maps/tignes-val-disere.jpg",prev:"https://files.skimap.org/m1tsowo3h05gb8yoanfwe2mwycw1",src:"https://skimap.org/skimaps/view/40949"},
  v3:{t:"Les 3 Vallées",full:"maps/3-vallees.jpg",prev:"https://files.skimap.org/sfmdlmc76xtrhowsbxchewk09xsw",src:"https://skimap.org/skimaps/view/34989"},
@@ -171,39 +179,39 @@ const AREA={
 };
 /* r = ratings [comfort, charm, snow] out of 5 (null = not published) */
 const R=[
- {n:"Tignes",c:"Val Claret, 2,100 m",area:"tv",map:"tv",air:"geneva",tr:"Geneva ~3h30 (also Chambéry)",
+ {n:"Tignes",c:"Val Claret, 2,100 m",area:"tv",map:"tv",ap:[["GVA","2h45"],["LYS","2h30"],["GNB","2h37"]],zr:"gva",
   p:[1083,1164,1224,1264,1283],y:null,r:[3,3,5],
   pass:"Tignes–Val d'Isère (not stated on UCPA's UK page)",passWarn:true,
   centre:["Foot of the Grande Motte glacier, short walk to the main lift. Ski back to the door with good snow","4-bed and twin rooms. Bathroom shared between 2 rooms","Bar and social areas"]},
- {n:"Val d'Isère",c:"3 min walk from the town centre",area:"tv",map:"tv",air:"geneva",tr:"Geneva / Lyon / Grenoble ~3h30",
+ {n:"Val d'Isère",c:"3 min walk from the town centre",area:"tv",map:"tv",ap:[["GVA","2h45"],["LYS","2h40"]],zr:"gva",
   p:[1083,1164,1224,1264,1283],y:null,r:[1,5,5],
   pass:"Tignes–Val d'Isère (not stated on UCPA's UK page)",passWarn:true,
   centre:["Bus to the slopes every 10 min","2-bed (bunk), 4-bed and 8-bed rooms. Shared bathrooms on each floor","Described by UCPA as very basic. Renovation delayed"]},
- {n:"Val Thorens",c:"In the middle of the pistes, 2,300 m",area:"v3",map:"v3",air:"geneva",tr:"Geneva ~3h30 (also Grenoble)",
+ {n:"Val Thorens",c:"In the middle of the pistes, 2,300 m",area:"v3",map:"v3",ap:[["GVA","2h20"],["LYS","2h20"],["GNB","2h15"]],zr:"gva",
   p:[null,1174,1234,1274,1294],y:null,r:[4,3,5],
   pass:"Les 3 Vallées (confirmed on UCPA product page)",passWarn:false,
   centre:["Ski-in/out. Circular building with 360° views","4-bed rooms with shower and sink, toilets shared between 2 rooms. En-suite twins available","Bar and own nightclub"]},
- {n:"La Plagne Centre",c:"La Plagne Centre village",area:"lp",map:"pd",air:"geneva",tr:"Geneva ~3h30 (Saturday transfers)",
+ {n:"La Plagne Centre",c:"La Plagne Centre village",area:"lp",map:"pd",ap:[["GVA","2h30"],["LYS","2h45"],["GNB","2h15"]],zr:"gva",
   p:[1094,1174,1234,1274,1294],y:[1159,1239,1299,1339,null],r:[5,4,3],
   pass:"La Plagne (Paradiski extension not stated)",passWarn:true,
   centre:["Ski-through building, with a ski tunnel through the centre","4-bed and twin rooms, all en-suite. Recently renovated (top UCPA comfort rating)","Bar, games room and small nightclub"]},
- {n:"La Plagne 1800",c:"Listed separately by UCPA",area:"lp",map:"pd",air:"geneva",tr:"Geneva ~3h30 (Saturday transfers)",
+ {n:"La Plagne 1800",c:"Listed separately by UCPA",area:"lp",map:"pd",ap:[["GVA","2h30"],["LYS","2h45"],["GNB","2h15"]],zr:"gva",
   p:[null,null,1094,1134,1154],y:null,r:[5,4,3],
   pass:"La Plagne only (confirmed on UCPA UK page)",passWarn:false,
   centre:["Ski through the middle of the centre","3–4-bed rooms, limited twins","Bar, buffet restaurant, Wi-Fi in common areas","UCPA's page describes the centre as being in La Plagne Centre. Confirm the building when booking"]},
- {n:"Les Arcs",c:"Arc 1600",area:"la",map:"pd",air:"geneva",tr:"Geneva ~3h15",
+ {n:"Les Arcs",c:"Arc 1600",area:"la",map:"pd",ap:[["GVA","2h45"],["LYS","3h00"],["GNB","2h03"]],zr:"gva",
   p:[1004,1083,null,null,1204],y:null,r:[3,null,4],
   pass:"Les Arcs (Paradiski extension not stated)",passWarn:true,
   centre:["Ski-in/out, 460 beds","4-bed rooms, bathrooms on each floor","3 bars, 3 buffet restaurants","Arc 1800 has the busiest nightlife in Les Arcs"]},
- {n:"Serre Chevalier",c:"Villeneuve, at the main lift hub",area:"sc",map:"sc",air:"turin",tr:"Turin ~2h30 (also Grenoble)",
+ {n:"Serre Chevalier",c:"Villeneuve, at the main lift hub",area:"sc",map:"sc",ap:[["TRN","1h58"],["GNB","1h54"]],zr:"trn",
   p:[1024,1104,1164,1204,1224],y:null,r:[4,5,3],
   pass:"Serre Chevalier (whole area)",passWarn:false,
   centre:["Ski-in/out. Heated outdoor pool and sun deck","4, 5 and 6-bed rooms plus twins. En-suite shower and sink, shared toilets","Bar and buffet restaurant with terrace","Turin shuttles arrive 10:00–21:00 on Saturdays"]},
- {n:"Flaine",c:"Town centre",area:"gm",map:"gm",air:"geneva",tr:"Geneva ~1h15",
+ {n:"Flaine",c:"Town centre",area:"gm",map:"gm",ap:[["GVA","1h15"]],zr:"gva",
   p:[1024,1104,1164,null,1224],y:null,r:[5,3,3],
   pass:"Grand Massif (confirmed)",passWarn:false,
   centre:["Close to the slopes via pedestrian lifts (not ski-in/out)","4-bed and twin rooms, all en-suite","Bar with a huge fireplace"]},
- {n:"Argentière",c:"On the high street",area:"gt",map:"gt",air:"geneva",tr:"Geneva ~1h30 (train station next to the centre)",
+ {n:"Argentière",c:"On the high street",area:"gt",map:"gt",ap:[["GVA","1h30"]],zr:"rail",
   p:[null,1083,1144,1183,1204],y:[null,1149,1209,1249,1269],r:[3,5,4],
   pass:"Chamonix valley areas. Only Grands Montets is linked to the centre; the others are by bus or train",passWarn:true,
   centre:["5 min walk to the Grands Montets lift","4, 5 and 6-bed rooms plus twins. Communal bathrooms on each floor. Refurbished 2013","Large bar and dining area"]}
@@ -212,23 +220,31 @@ const f=v=>v?'€'+v.toLocaleString('en-IE'):'–';
 const first=r=>{const i=r.p.findIndex(Boolean);return i};
 const low=r=>Math.min(...r.p.filter(Boolean));
 const stars=n=>n==null?'<span class="note" style="margin:0">not published</span>':'<span class="stars" aria-label="'+n+' out of 5">'+'★'.repeat(n)+'☆'.repeat(5-n)+'</span>';
+const ZR={
+ gva:i=>'Train to Geneva Airport (~3 h, CHF 25–90 each way), then transfer',
+ rail:i=>'Direct train via Martigny + Mont-Blanc Express (~4–4.5 h), no transfer',
+ trn:i=>`Fly to Turin, ${f(ZRH_TRN[i])} return (1-stop), then ~2 h drive`
+};
 function weekRows(r){
  return WEEKS.map((w,i)=>{
   const up=r.p[i];
   if(!up) return `<div class="week na"><div class="wh"><span>Sat ${w}</span><span>Not available</span></div></div>`;
-  let dub,zrh;
-  if(r.air==='turin'){const x=FL.dubTrn[i];dub=x.d===x.s?`${f(x.d)} direct (Turin)`:`${f(x.d)} direct · ${f(x.s)} 1-stop (Turin)`;zrh=`${f(FL.zrhTrn[i].s)} 1-stop to Turin`;}
-  else{const x=FL.dubGva[i];dub=`${f(x.d)} direct · ${f(x.s)} 1-stop (Geneva)`;zrh='Train to Geneva Airport, CHF 25–90 each way';}
+  const opts=r.ap.map(([c,dt])=>Object.assign({c,dt},fareAt(c,i))).sort((a,b)=>a.p-b.p);
+  const b=opts[0];
+  const best=`<b>${AP[b.c].n} ${f(b.p)}</b> ${b.k}, ${b.dt} drive`;
+  const alt=opts.slice(1).map(o=>`${AP[o.c].n} ${f(o.p)} ${o.k}`).join(' · ');
   const yoga=r.y&&r.y[i]?`<span>Yoga version</span><span>${f(r.y[i])}</span>`:'';
   return `<div class="week"><div class="wh"><span>Sat ${w}</span><span>${f(up)}</span></div>
-   <div class="wl"><span>🇮🇪 Flight</span><span>${dub}</span><span>🇨🇭 Travel</span><span>${zrh}</span>${yoga}</div></div>`;
+   <div class="wl"><span>🇮🇪 Best</span><span>${best}</span>${alt?`<span>🇮🇪 Also</span><span>${alt}</span>`:''}<span>🇨🇭 Zurich</span><span>${ZR[r.zr](i)}</span>${yoga}</div></div>`;
  }).join('');
 }
+function airports(r){return r.ap.map(([c,dt])=>`${AP[c].n} ${dt}`).join(' · ');}
+function flyList(r){return r.ap.map(([c])=>AP[c].n).join(' / ');}
 function card(r){
  const a=AREA[r.area], tot=a.e+a.i+a.h;
  return `<article class="card opt" id="opt-${r.n.replace(/\W+/g,'-').toLowerCase()}">
   <h3>${r.n}</h3>
-  <div class="sub">${r.c} · ${r.tr}</div>
+  <div class="sub">${r.c} · fly ${flyList(r)}</div>
   <div class="nums">
    <div class="num"><small>UCPA from</small><strong>${f(low(r))}</strong></div>
    <div class="num"><small>Pistes</small><strong>${a.km} km</strong></div>
@@ -242,6 +258,7 @@ function card(r){
   </div>
   <div class="actions"><button class="btn" type="button" data-map="${r.map}">🗺️ Piste map</button></div>
   <details class="more"><summary>More detail</summary>
+   <div class="sec"><h4>Airports (driving time)</h4><p style="margin:0;font-size:14px">${airports(r)}</p><p class="note" style="margin:4px 0 0">Private transfer times. UCPA shared Saturday buses take about an hour longer.</p></div>
    <div class="sec"><h4>Weeks and travel</h4>${weekRows(r)}</div>
    <div class="sec"><h4>Ski area</h4>
     <dl class="kv">
