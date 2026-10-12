@@ -26,13 +26,13 @@ Group ski trip planning (Dublin group + Leeds group, ~7–10 people). Source cha
     - Redeploy check: after `up -d --build`, Traefik returns 404 for ~30 s until the container is healthy, and Cloudflare caches 404s for images for ~3 min. Wait for `healthy` plus ~30 s before curling the image URLs.
     - Chrome throttles timers in background tabs, so test async UI with synchronous DOM checks rather than setTimeout loops.
   - Iteration 4 (UCPA all-inclusive packages, January): `ski_trip_ucpa_jan_27.html` / `ski_trip_ucpa_jan_27_research.md`. Companion page to iteration 3, not a replacement. Not hosted yet.
-  - Iteration 5 (DIY, three weeks: Sat 30 Jan, 6 Feb, 13 Feb; prices 13/10/2026): `ski_trip_feb_27.html` / `ski_trip_feb_27_research.md`. **Current DIY plan, hosted as `site/index.html`** (replaced iteration 3 there; iteration 3 is still kept locally).
+  - Iteration 5 (DIY, three weeks: Sat 30 Jan, 6 Feb, 13 Feb; prices 13/10/2026): `ski_trip_feb_27.html` / `ski_trip_feb_27_research.md`. **Current DIY plan, hosted as `site/2027/index.html` at ski.jamescarron.cloud/2027/** (replaced iteration 3 there; iteration 3 is still kept locally).
   - `ski_2027_plan.html` / `.md` are the original working files (identical to the March copies). Keep them.
 - Other research to keep: `andorra_pricing.md` (GBP, March-based), `whatsapp_chat_notes.md`, `whatsapp_poll_draft.md`.
 
 ## Hosting (ski.jamescarron.cloud) and the public repo
 - GitHub repo `JamesCarron/ski_season` is **public** and tracks **only** the hosted site and build files (whitelist `.gitignore`). Research, iterations and chat notes contain friends' names and personal details and must **stay local**. Never un-ignore them.
-- The published page is `site/index.html`, a copy of the current iteration with names removed (e.g. "<name>'s week" becomes "pencilled-in week") and no links to local files. It has `noindex`. When a new iteration becomes current, regenerate it from the new HTML and grep it for names before committing.
+- The published page is `site/2027/index.html` (URL /2027/; `/` 302-redirects there via nginx.conf; the container healthcheck in infra checks /2027/), a copy of the current iteration with names removed (e.g. "<name>'s week" becomes "pencilled-in week") and no links to local files. It has `noindex`. When a new iteration becomes current, regenerate it from the new HTML and grep it for names before committing.
 - Served by `nginxinc/nginx-unprivileged:alpine` on port 8080 (`Dockerfile`). Deployed built-on-box via `C:\GitHub\Applets\infra\apps\ski\compose.yml`. The redeploy recipe is in `README.md`.
 
 ## Wording
