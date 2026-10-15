@@ -291,10 +291,6 @@ td.a-num, th.a-num { text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 <!--/house-css-->
 
-
-
-
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -403,18 +399,23 @@ a{color:var(--accent)}
   </nav>
 
   <section id="pick">
-    <div class="card rec" id="pickbox"></div>
+    <div class="card rec">
+      <h3>Sat 6 Feb · Portes du Soleil (Morzine) or Les Deux Alpes</h3>
+      <p><b>Best week for both groups on direct flights.</b> Ireland flies <b>Cork → Geneva direct for €242</b> (Aer Lingus). Leeds goes Manchester → Geneva for €83 (easyJet).</p>
+      <p><b>≈ €890–€1,030 pp</b> including a representative apartment. 6 Feb is busier, as French and Scottish holidays start.</p>
+      <p>30 Jan is the best value for the Leeds group (€765 for Morzine), but the Irish group's only direct Geneva flight that Saturday is €444, which pushes them to ~€1,120.</p>
+    </div>
   </section>
 
   <h2 id="resorts">Resorts</h2>
-  <p class="note">Tap a map for full resolution. Totals, direct flights and where to stay each week are under "More detail". Every flight and place to stay links to its live search.</p>
+  <p class="note">Tap a map for full resolution. Totals, direct flights and the representative apartment for each week are under "More detail". Every flight and apartment links to its live search.</p>
   <div class="stack two" id="list"></div>
 
   <h2 id="weeks">Weeks &amp; flights</h2>
   <details class="block">
     <summary>The three weeks compared</summary>
     <div class="inner">
-      <p class="note" style="margin:0 0 10px">Each week shows its best-value resort: direct flights + bags, transfer, accommodation ÷5 and pass.</p>
+      <p class="note" style="margin:0 0 10px">Totals for Morzine: direct flights + bags, transfer, the representative apartment ÷5 and pass.</p>
       <div class="stack three" id="wks"></div>
     </div>
   </details>
@@ -429,7 +430,7 @@ a{color:var(--accent)}
 
   <h2 id="out">Ruled out</h2>
   <div class="card">
-    <div class="out"><span><b>13 Feb week</b></span><span>Half-term crowds; French resorts €1,470–€1,690 pp</span></div>
+    <div class="out"><span><b>13 Feb week</b></span><span>Half-term: €1,100–€1,350 everywhere</span></div>
     <div class="out"><span><b>Lyon, Chambéry</b></span><span>Direct fares never beat Geneva or Grenoble</span></div>
     <div class="out"><span><b>Bansko / Borovets</b></span><span>Too small (75 / 58 km)</span></div>
   </div>
@@ -437,14 +438,14 @@ a{color:var(--accent)}
   <h2>Extras</h2>
   <div class="card">
     <ul style="margin:0;padding-left:18px;font-size:15px">
-      <li><b>Book accommodation first.</b> Only a handful of listings per resort and week give every couple a private room without bunks or sofa beds.</li>
+      <li><b>Book apartments first.</b> February stock is moving and prices are rising.</li>
       <li>Fancy-dress day on Thursday. Spa day midweek, and bring flip-flops.</li>
       <li>Lessons: 5 morning group lessons for those who need them.</li>
       <li>Insurance with winter-sports and third-party cover. EHIC/GHIC is not enough.</li>
     </ul>
   </div>
 
-  <p class="foot">Estimates only. Direct flights and accommodation are live prices from 16 Oct 2026 and will move. Totals = direct flight + €40 bags (+ €30 Leeds–Manchester train where Manchester is used) + shared transfer + accommodation ÷5 + 6-day pass. Accommodation is chosen for a group of mostly couples: an entire place with 3–4 bedrooms and at least 2 double beds, or a hotel with 3 private rooms. Bunk beds, sofa beds and futons are excluded. The pick is the lowest-priced listing rated 7.5+ (falling back to 7.0+, then to an unrated listing, marked as such). Prices include taxes but were read while signed in to a Booking.com Genius account, so some show a member discount; without it, or on a different rate plan on the property page, expect up to ~20% more. Passes are 2026/27 official prices (Grandvalira may rise in peak weeks). Piste maps: skimap.org, each linked to its source.</p>
+  <p class="foot">Estimates only. Direct flights and apartments are live prices from 16 Oct 2026 and will move. Totals = direct flight + €40 bags (+ €30 Leeds–Manchester train where Manchester is used) + shared transfer + representative apartment ÷5 + 6-day pass. The representative apartment is the one closest to the middle of the 8 lowest-priced Booking.com results for 5 adults, rated 7+. Apartment prices include taxes but were read while signed in to a Booking.com Genius account, so some show a member discount; without it, or on a different rate plan on the property page, expect up to ~20% more. Passes are 2026/27 official prices (Grandvalira may rise in peak weeks). Piste maps: skimap.org, each linked to its source.</p>
 </div>
 
 <script>
@@ -468,7 +469,7 @@ const FL={
  'MAN-BCN':[[88,'Ryanair'],[88,'Vueling'],[278,'Vueling']]
 };
 const gf=(k,i)=>{const [o,d]=k.split('-');return 'https://www.google.com/travel/flights?q='+encodeURIComponent(`Nonstop flights from ${o} to ${d} on ${D[i][0]} through ${D[i][1]}`)+'&curr=EUR&hl=en-GB';};
-const bk=(p,i,rooms)=>`https://www.booking.com${p}?checkin=${D[i][0]}&checkout=${D[i][1]}&group_adults=5&no_rooms=${rooms||1}&group_children=0&selected_currency=EUR`;
+const bk=(p,i)=>`https://www.booking.com${p}?checkin=${D[i][0]}&checkout=${D[i][1]}&group_adults=5&no_rooms=1&group_children=0&selected_currency=EUR`;
 const f=v=>'€'+Math.round(v).toLocaleString('en-IE');
 
 /* best direct route for a group to one of the resort's gateways, including transfer */
@@ -484,43 +485,42 @@ function bestRoute(r,g,i){
 function total(r,g,i){const b=bestRoute(r,g,i);return b.fare+BAGS+(TRAIN[b.o]||0)+b.tr+r.stay[i][1]/5+r.pass;}
 
 const R=[
- {n:"Portes du Soleil · Morzine",c:"🇫🇷🇨🇭 France / Switzerland · stay in Morzine (or Avoriaz)",b:"Best for Leeds",k:"",
+ {n:"Portes du Soleil · Morzine",c:"🇫🇷🇨🇭 France / Switzerland · stay in Morzine (or Avoriaz)",b:"Top pick",k:"",
   map:"portes-du-soleil",mapSrc:"https://skimap.org/skimaps/view/38554",mapYr:"2025",
   km:580,black:60,linked:"12 linked resorts (Morzine, Avoriaz, Les Gets, Châtel, Champéry…)",
   pass:352,passTxt:"Portes du Soleil, €352 (online)",gw:{GVA:65},airTxt:"Geneva, 1h15–1h30 (shared transfer ~€65)",
   parks:"Avoriaz: 4 snowparks + snowcross",apres:"Morzine bars at the foot of the Pleney; La Folie Douce Avoriaz",
-  /* [name, price for the group, score (null = not yet rated), rooms/beds, path, booking rooms] */
-  stay:[["Duplex calme et spacieux pour 6, près des pistes",2492,8.0,"Apartment · 3 bedrooms, 2 bathrooms · 2 doubles + 2 singles, 74 m²","/hotel/fr/appartement-morzine-4-pieces-6-personnes-fr-1-684-8.en-gb.html",1],
-        ["Emerald Stay Apartments Morzine",4019,7.5,"Apartment · 3 bedrooms, 2 bathrooms · 3 large doubles","/hotel/fr/emerald-tree-morzine.en-gb.html",1],
-        ["Duplex calme et spacieux pour 6, près des pistes",3595,8.0,"Apartment · 3 bedrooms, 2 bathrooms · 2 doubles + 2 singles, 74 m²","/hotel/fr/appartement-morzine-4-pieces-6-personnes-fr-1-684-8.en-gb.html",1]],
-  notes:["Hotels with three private rooms cost more here (€4,239–€5,320 for the week)","Morzine sits at 1,000 m; Avoriaz (1,800 m, ski-in/out) costs more but is more snow-sure"]},
- {n:"Les Deux Alpes",c:"🇫🇷 France · village 1,650 m, glacier to 3,600 m",b:"Party",k:"o",
+  stay:[["Appartement 2 pièces proche du centre de Morzine",1101,7.4,"1-bed apartment for 5","/hotel/fr/apartment-5-personnes-appartement-2-pieces-proche-du-centre-de-morzine.en-gb.html"],
+        ["Appartement 2 pièces proche du centre de Morzine",1639,7.4,"1-bed apartment for 5","/hotel/fr/apartment-5-personnes-appartement-2-pieces-proche-du-centre-de-morzine.en-gb.html"],
+        ["Appartement 2 pièces proche du centre de Morzine",1935,7.4,"1-bed apartment for 5","/hotel/fr/apartment-5-personnes-appartement-2-pieces-proche-du-centre-de-morzine.en-gb.html"]],
+  notes:["The same apartment is the representative pick in all three weeks, so the price rise is like-for-like","Morzine sits at 1,000 m; Avoriaz (1,800 m, ski-in/out) costs more but is more snow-sure"]},
+ {n:"Les Deux Alpes",c:"🇫🇷 France · village 1,650 m, glacier to 3,600 m",b:"Value + party",k:"",
   map:"les-2-alpes",mapSrc:"https://skimap.org/skimaps/view/35289",mapYr:"2025–26",
   km:220,black:38,linked:"Linked area + glacier. 6-day pass adds 2 days Alpe d'Huez and a day each at Serre Chevalier, Montgenèvre, Sestriere, Puy-St-Vincent",
   pass:333,passTxt:"Les 2 Alpes, €333",gw:{GVA:115,GNB:75},airTxt:"Grenoble 1h45 (~€75) or Geneva ~3 h (~€115)",
   parks:"2 Alpes Freestyle Land: big-air line, superpipe, slopestyle, boardercross",apres:"2 km strip with 30+ bars and clubs",
-  stay:[["Quirlies 2: appartement de standing au pied des pistes",5182,null,"Apartment · 3 bedrooms · 1 double + 1 large double + 4 singles, 50 m²","/hotel/fr/appartement-de-standing-au-pied-des-pistes-6-a-8-personnes.en-gb.html",1],
-        ["Appartement duplex 2Alpes centre",3281,9.0,"Apartment · 3 bedrooms, 2 bathrooms · 2 large doubles + 4 singles, 55 m²","/hotel/fr/appartement-duplex-au-calme-les-deux-alpes.en-gb.html",1],
-        ["Appartement duplex 2Alpes centre",3281,9.0,"Apartment · 3 bedrooms, 2 bathrooms · 2 large doubles + 4 singles, 55 m²","/hotel/fr/appartement-duplex-au-calme-les-deux-alpes.en-gb.html",1]],
-  notes:["Most apartments here have bunk or sofa beds: only 3–5 listings per week fit the brief","Hotels with three private rooms start at €5,000+ for the week","Day trips on the pass need transport (car or bus)"]},
+  stay:[["Appartement 5 personnes, pied des pistes, balcon",1073,7.3,"1-bed apartment for 5","/hotel/fr/appartement-5-personnes-38860-les-2-alpes-pied-des-pistes-balcon.en-gb.html"],
+        ["Le Sarana: 75 m², calme, belle vue avec terrasse",1451,9.7,"2-bed apartment","/hotel/fr/le-sarana-75m2-calme-belle-vue-avec-terrasse.en-gb.html"],
+        ["Appartement Les 2 Alpes 1800, skis aux pieds",1431,7.5,"Apartment with mountain view","/hotel/fr/appartement-les-2-alpes-1800-depart-47-retour-skis-aux-pieds.en-gb.html"]],
+  notes:["Day trips on the pass need transport (car or bus)","The airport for each group and week is chosen on flight + transfer cost"]},
  {n:"3 Vallées · Les Menuires",c:"🇫🇷 France · 1,100–3,230 m",b:"Biggest linked",k:"o",
   map:"3-vallees",mapSrc:"https://skimap.org/skimaps/view/34989",mapYr:"2025",
   km:600,black:60,linked:"7 linked resorts (Val Thorens, Méribel, Courchevel…)",
   pass:421,passTxt:"3 Vallées, €421 (Les Menuires-only €350)",gw:{GVA:105,GNB:100},airTxt:"Geneva ~3 h (~€105) or Grenoble ~2h15 (~€100)",
   parks:"VT Park (Val Thorens), Les Menuires, Méribel",apres:"Val Thorens nightlife 10 min up the valley; Les Menuires quieter",
-  stay:[["Appartement Cosy 6 pers, terrasse, parking, navettes gratuites",2704,null,"Apartment · 3 bedrooms · 3 large doubles, 65 m²","/hotel/fr/appartement-les-menuires-4-pieces-6-personnes-fr-1-574-47.en-gb.html",1],
-        ["Chalet La Petite Maison",3036,8.8,"Chalet · 3 bedrooms · 2 doubles + 2 singles, 65 m²","/hotel/fr/chalet-la-petite-maison.en-gb.html",1],
-        ["Chalet La Petite Maison",3036,8.8,"Chalet · 3 bedrooms · 2 doubles + 2 singles, 65 m²","/hotel/fr/chalet-la-petite-maison.en-gb.html",1]],
-  notes:["Only one listing per week fits the brief (most have bunk or sofa beds)","Grenoble–Les Menuires transfer price is an estimate"]},
- {n:"Pas de la Casa · Andorra",c:"🇦🇩 Andorra · 2,100 m",b:"Best value",k:"",
+  stay:[["Appartement 2 pièces mezzanine, pied des pistes (Fontanettes)",1100,7.5,"1-bed apartment","/hotel/fr/appartement-les-menuires-2-pieces-6-personnes-fr-1-574-28.en-gb.html"],
+        ["3 pièces, 5 pers, ski aux pieds",1870,8.0,"2-bed apartment","/hotel/fr/apartment-ski-soleil-10.en-gb.html"],
+        ["Résidence Pierre & Vacances Les Combes",1858,7.8,"Apartment","/hotel/fr/maeva-les-combes.en-gb.html"]],
+  notes:["Apartments jump ~70% after 30 Jan","Grenoble–Les Menuires transfer price is an estimate"]},
+ {n:"Pas de la Casa · Andorra",c:"🇦🇩 Andorra · 2,100 m",b:"Best Irish flights",k:"o",
   map:"grandvalira",mapSrc:"https://skimap.org/skimaps/view/38216",mapYr:"2026",
   km:215,black:33,linked:"Grandvalira linked; pass also covers Pal Arinsal + Ordino Arcalís (308 km, by bus)",
   pass:396,passTxt:"Grandvalira, €396 (may rise in peak weeks)",gw:{BCN:100},airTxt:"Barcelona + ~4 h bus (~€100)",
   parks:"Snowpark zones marked on the Grandvalira map",apres:"Pas83, UFO, Paddy's: last year's benchmark",
-  stay:[["Pic Maià Mountain Hotel",2374,8.4,"Hotel · 3 private rooms: 1 superior double + 2 doubles · 1.2 km from the centre","/hotel/ad/pic-maia.en-gb.html",3],
-        ["Pic Maià Mountain Hotel",3196,8.4,"Hotel · 3 private rooms: 1 superior double + 2 doubles · 1.2 km from the centre","/hotel/ad/pic-maia.en-gb.html",3],
-        ["Pic Maià Mountain Hotel",2396,8.4,"Hotel · 3 private rooms: 1 superior double + 2 doubles · 1.2 km from the centre","/hotel/ad/pic-maia.en-gb.html",3]],
-  notes:["Pic Maià price is room only, non-refundable (30 Jan: €889 superior double + 2 × €748 doubles). For the group, free cancellation is ~€2,586, with breakfast ~€3,174, half board ~€4,119","A hotel beats apartments here: 3-bedroom apartments without bunks are mostly in Soldeu / Incles, 7–9 km away, from €3,023","Other private-room hotels in Pas: Hotel Musher, Hotel Casado (€3,915–€4,725, 300 m from the centre)","Dublin/Cork → Barcelona direct from €88, the lowest Irish direct fares on the page"]}
+  stay:[["Altissim Nevada II",1829,7.8,"Apartment","/hotel/ad/altissim-nevada-ii.en-gb.html"],
+        ["Altissim OsBlanc",1852,9.5,"2-bed apartment","/hotel/ad/altissim-osblanc.en-gb.html"],
+        ["Kione Calgary",1957,7.5,"Studio apartment","/hotel/ad/kione-calgary.en-gb.html"]],
+  notes:["Dublin/Cork → Barcelona direct from €88, the lowest Irish direct fares on the page","Only 32–46 apartments listed on Booking.com"]}
 ];
 const cls=v=>v<=1000?'ok':(v>=1150?'hi':'');
 const routeCell=(b,i)=>`<a class="c" href="${gf(b.k,i)}" target="_blank" rel="noopener">${AP[b.o]} → ${AP[b.dest]} ${f(b.fare)}<small>${FL[b.k][i][1]}, direct ↗</small></a>`;
@@ -557,36 +557,20 @@ document.getElementById('list').innerHTML=R.map(r=>{
      <span class="h">Week</span><span class="h">🇮🇪 Ireland</span><span class="h">🏴 Leeds</span>
      ${W.map((w,i)=>`<span>${w}</span>${routeCell(bestRoute(r,'ie',i),i)}${routeCell(bestRoute(r,'uk',i),i)}`).join('')}
     </div></div>
-   <div class="sec"><h4>Where to stay: private rooms, no bunks or sofa beds</h4>
-    <div class="stays">${r.stay.map((s,i)=>`<a class="stay" href="${bk(s[4],i,s[5])}" target="_blank" rel="noopener"><small>${W[i]} · ${f(s[1])} for 5 (${f(s[1]/5)} pp) · ${s[2]==null?'not yet rated':s[2].toFixed(1)+'/10'}</small><b>${s[0]} ↗</b><small>${s[3]}</small></a>`).join('')}</div></div>
+   <div class="sec"><h4>Representative apartment (Booking.com, 5 adults)</h4>
+    <div class="stays">${r.stay.map((s,i)=>`<a class="stay" href="${bk(s[4],i)}" target="_blank" rel="noopener"><small>${W[i]} · ${f(s[1])} for 5 (${f(s[1]/5)} pp) · ${s[2].toFixed(1)}/10</small><b>${s[0]} ↗</b><small>${s[3]}</small></a>`).join('')}</div></div>
    <div class="sec"><h4>Notes</h4><ul>${r.notes.map(x=>`<li>${x}</li>`).join('')}<li><a class="src" href="${r.mapSrc}" target="_blank" rel="noopener">Map source on skimap.org</a></li></ul></div>
   </details>
  </article>`;}).join('');
 
-/* every resort x week, ranked on the average of the two groups */
-const combos=R.flatMap(r=>W.map((w,i)=>({r,i,ie:total(r,'ie',i),uk:total(r,'uk',i)}))).map(c=>Object.assign(c,{avg:(c.ie+c.uk)/2})).sort((a,b)=>a.avg-b.avg);
-const via=(r,g,i)=>{const b=bestRoute(r,g,i);return `${AP[b.o]} → ${AP[b.dest]} ${f(b.fare)}`;};
-{
- const top=combos[0], next=combos.find(c=>c.r!==top.r), s=top.r.stay[top.i];
- const over=combos.filter(c=>c.avg>1200).length;
- document.getElementById('pickbox').innerHTML=`<h3>Sat ${W[top.i]} · ${top.r.n}</h3>
-  <p><b>Lowest combined cost with private rooms for couples.</b> Ireland flies ${via(top.r,'ie',top.i)}, Leeds flies ${via(top.r,'uk',top.i)} (direct, return).</p>
-  <p><b>≈ ${f(top.ie)} (Ireland) / ${f(top.uk)} (Leeds) pp</b>, staying at ${s[0]} (${s[3].split(' · ').slice(0,2).join(', ')}).</p>
-  <p>Runner-up: ${next.r.n}, Sat ${W[next.i]}: ${f(next.ie)} / ${f(next.uk)} pp.</p>
-  <p class="note" style="margin:8px 0 0">Places with a private room per couple cost about twice as much as the bunk-and-sofa-bed apartments used before, so ${over} of the ${combos.length} resort-week options now average over €1,200 pp.</p>`;
-}
-const WKX=[["Sat 30 Jan – 6 Feb",["No major school holidays","Leeds → Geneva €88 direct; Irish Geneva direct €444"]],
-           ["Sat 6 – 13 Feb",["French Paris-zone, Scottish and Bavarian holidays","Cork → Geneva €242; Manchester → Geneva €83"]],
-           ["Sat 13 – 20 Feb",["Irish mid-term + English half-term","Geneva direct: Dublin €511, Manchester €297"]]];
-{
- const bestPerWeek=W.map((_,i)=>combos.find(c=>c.i===i));
- const order=[...bestPerWeek].sort((a,b)=>a.avg-b.avg);
- document.getElementById('wks').innerHTML=bestPerWeek.map((c,i)=>{
-  const rank=order.indexOf(c), cl=i===2?'r':(rank===0?'g':'m'), tag=i===2?'Peak · half-term':(rank===0?'★ Best value':'OK');
-  return `<div class="wk ${cl}"><span class="tag">${tag}</span><h3>${WKX[i][0]}</h3>
-  <dl class="kv"><dt>Best resort</dt><dd>${c.r.n.split(' · ')[0]}</dd><dt>🇮🇪 Ireland</dt><dd>${f(c.ie)}</dd><dt>🏴 Leeds</dt><dd>${f(c.uk)}</dd></dl>
-  <ul>${WKX[i][1].map(x=>`<li>${x}</li>`).join('')}</ul></div>`;}).join('');
-}
+/* week overview, Morzine */
+const M=R[0];
+const WK=[["g","Best for Leeds","Sat 30 Jan – 6 Feb",["Leeds → Geneva €88 direct","Irish direct to Geneva €444 (Dublin)","No major school holidays"]],
+          ["g","★ Best combined","Sat 6 – 13 Feb",["Cork → Geneva €242 direct","Manchester → Geneva €83","French Paris-zone, Scottish and Bavarian holidays"]],
+          ["r","Peak · half-term","Sat 13 – 20 Feb",["Irish mid-term + English half-term","Geneva direct: Dublin €511, Manchester €297","Apartments at their highest"]]];
+document.getElementById('wks').innerHTML=WK.map(([c,t,h,li],i)=>`<div class="wk ${c}"><span class="tag">${t}</span><h3>${h}</h3>
+ <dl class="kv"><dt>🇮🇪 Ireland</dt><dd>${f(total(M,'ie',i))}</dd><dt>🏴 Leeds</dt><dd>${f(total(M,'uk',i))}</dd></dl>
+ <ul>${li.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
 
 /* all direct flights */
 const OV={'🇮🇪 Ireland':['DUB-GVA','ORK-GVA','DUB-GNB','DUB-BCN','ORK-BCN'],'🏴 Leeds':['LBA-GVA','MAN-GVA','MAN-GNB','MAN-BCN']};
