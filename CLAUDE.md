@@ -70,6 +70,7 @@ ski_season/
 ## Hosting (ski.jamescarron.cloud)
 - The published page is `site/2027/index.html` (URL /2027/; `/` 302-redirects there via nginx.conf; the container healthcheck in infra checks /2027/), a copy of the current iteration with names removed (e.g. "<name>'s week" becomes "pencilled-in week") and no links to local files. It has `noindex`. When a new iteration becomes current, regenerate it from the new HTML and grep it for names before committing.
 - Served by `nginxinc/nginx-unprivileged:alpine` on port 8080 (`Dockerfile`). Deployed built-on-box via `C:\GitHub\Applets\infra\apps\ski\compose.yml`. The redeploy recipe is in `README.md`.
+- **Running the redeploy from this laptop** (worked 2026-10-18): use **PowerShell's** `ssh`, not Git Bash's. Git Bash's ssh has a different home (`/c/SPB_DATA`), so it ignores `~\.ssh\config` (user `admin`, `id_ed25519_hetzner`) and fails host-key verification. sshd listens on the tailnet only, so connect through Tailscale and check the key against the stored public-IP entry: `ssh -o HostName=100.68.148.7 -o HostKeyAlias=167.233.82.105 apps-01 '<commands>'`. Then wait until `docker inspect -f '{{.State.Health.Status}}' ski-app-1` says `healthy`, plus about 30 s, before curling the public URLs.
 
 ## Wording
 - Never say "cheap" / "cheapest" / "cheaper". Use "best value", "great value", "affordable", "low-cost". Source URLs can stay as they are.
