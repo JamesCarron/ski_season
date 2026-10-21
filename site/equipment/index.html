@@ -301,28 +301,69 @@ body { margin: 0; background: var(--a-bg); color: var(--a-ink); font-family: var
 .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 16px 48px; }
 h1 { font-size: 30px; line-height: 1.15; margin: 0 0 10px; }
 .lede { font-size: 17px; color: var(--a-ink-secondary); margin: 0 0 24px; max-width: 700px; }
+nav.jump { display: flex; flex-wrap: wrap; gap: 0 20px; margin: 0 0 8px; }
+nav.jump a { display: inline-flex; align-items: center; min-height: 40px; color: var(--a-link); text-decoration: none; font-size: 15px; }
+section { padding-top: 24px; }
+section h2 { font-size: 24px; margin: 0 0 2px; }
+section .intro { color: var(--a-ink-secondary); margin: 0 0 14px; }
 .cards { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.cards > * { min-width: 0; }
 a.card { display: block; background: var(--a-bg-panel); border: 1px solid var(--a-line); border-radius: 8px; padding: 18px 20px; color: var(--a-ink); text-decoration: none; min-height: 44px; }
 a.card:hover, a.card:focus-visible { border-color: var(--a-link); }
-a.card h2 { font-size: 20px; margin: 0 0 4px; color: var(--a-link); }
+a.card h3 { font-size: 20px; margin: 0 0 4px; color: var(--a-link); }
 a.card p { margin: 0; color: var(--a-ink-secondary); }
 footer { margin-top: 32px; font-size: 14px; color: var(--a-ink-secondary); }
 @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 760px) { .wrap { padding: 48px 32px; } h1 { font-size: 40px; } .lede { font-size: 19px; } }
+@media (min-width: 760px) { .wrap { padding: 48px 32px; } h1 { font-size: 40px; } .lede { font-size: 19px; } section h2 { font-size: 28px; } }
+@media (min-width: 960px) { .cards { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
 <main class="wrap">
   <h1>Ski &amp; snowboard equipment guides</h1>
   <p class="lede">What matters when buying each piece of kit, ranked by how much it affects your riding, with the jargon explained.</p>
-  <div class="cards">
-    <a class="card" href="helmets/"><h2>Helmets</h2><p>Fit, certification, MIPS and other rotational protection, shell construction, and a 40-term glossary.</p></a>
-    <a class="card" href="boots/"><h2>Boots</h2><p>Mondopoint sizing calculator, shell fit, last width, flex, liners and bootfitting, sole and binding compatibility.</p></a>
-    <a class="card" href="gloves/"><h2>Gloves</h2><p>Gloves vs mittens vs lobsters, membranes and insulation, a temperature guide and a size calculator.</p></a>
-    <a class="card" href="poles/"><h2>Poles</h2><p>Length calculator, aluminium vs carbon, fixed vs adjustable, straps, baskets and tips.</p></a>
-    <a class="card" href="snowboards/"><h2>Snowboards</h2><p>Length and width calculator, camber vs rocker, shape, flex, riding styles, construction and base.</p></a>
-    <a class="card" href="snowboard-bindings/"><h2>Snowboard bindings</h2><p>Size calculator, board mount compatibility, flex, straps vs rear-entry vs step-in, and stance setup.</p></a>
-  </div>
+  <nav class="jump"><a href="#ski">Ski</a><a href="#snowboard">Snowboard</a><a href="#clothing">Clothing</a><a href="#misc">Misc</a></nav>
+  <section id="ski">
+    <h2>Ski</h2>
+    <p class="intro">Kit for skiers.</p>
+    <div class="cards">
+      <a class="card" href="skis/"><h3>Skis</h3><p>Length calculator, ski types, waist width, camber and rocker, turn radius and construction.</p></a>
+      <a class="card" href="ski-bindings/"><h3>Ski bindings</h3><p>Release values (DIN) explained, alpine vs GripWalk vs touring, brake width, and a boot-sole compatibility picker.</p></a>
+      <a class="card" href="boots/"><h3>Ski boots</h3><p>Mondopoint sizing calculator, shell fit, last width, flex, liners and bootfitting, sole and binding compatibility.</p></a>
+      <a class="card" href="poles/"><h3>Poles</h3><p>Length calculator, aluminium vs carbon, fixed vs adjustable, straps, baskets and tips.</p></a>
+    </div>
+  </section>
+  <section id="snowboard">
+    <h2>Snowboard</h2>
+    <p class="intro">Kit for snowboarders.</p>
+    <div class="cards">
+      <a class="card" href="snowboards/"><h3>Snowboards</h3><p>Length and width calculator, camber vs rocker, shape, flex, riding styles, construction and base.</p></a>
+      <a class="card" href="snowboard-bindings/"><h3>Snowboard bindings</h3><p>Size calculator, board mount compatibility, flex, straps vs rear-entry vs step-in, and stance setup.</p></a>
+      <a class="card" href="snowboard-boots/"><h3>Snowboard boots</h3><p>Size calculator, flex, laces vs speed-lace vs BOA, liners, heel hold and step-in compatibility.</p></a>
+    </div>
+  </section>
+  <section id="clothing">
+    <h2>Clothing</h2>
+    <p class="intro">What to wear, for skiers and snowboarders alike.</p>
+    <div class="cards">
+      <a class="card" href="jackets/"><h3>Jackets</h3><p>Waterproof and breathability ratings, shell vs insulated, layer construction, features and a jacket picker.</p></a>
+      <a class="card" href="pants/"><h3>Pants</h3><p>Pants vs bibs, insulated vs shell, fit over boots, features and a size calculator.</p></a>
+      <a class="card" href="layers/"><h3>Base & mid layers</h3><p>Merino vs synthetic, fleece vs insulated mid layers, and a layering picker by temperature.</p></a>
+      <a class="card" href="socks/"><h3>Socks</h3><p>Why thin is warmer, merino vs synthetic, fit and a sock picker.</p></a>
+      <a class="card" href="gloves/"><h3>Gloves</h3><p>Gloves vs mittens vs lobsters, membranes and insulation, a temperature guide and a size calculator.</p></a>
+      <a class="card" href="helmets/"><h3>Helmets</h3><p>Fit, certification, MIPS and other rotational protection, shell construction, and a 40-term glossary.</p></a>
+      <a class="card" href="goggles/"><h3>Goggles</h3><p>Lens categories and a tint picker, contrast and photochromic lenses, lens shapes, fogging, fit with helmets and glasses.</p></a>
+    </div>
+  </section>
+  <section id="misc">
+    <h2>Misc</h2>
+    <p class="intro">Staying in touch, staying safe off-piste, and everything else worth packing.</p>
+    <div class="cards">
+      <a class="card" href="radios/"><h3>Radios & group comms</h3><p>PMR446 walkie-talkies vs helmet intercoms vs phone apps, real-world range in the mountains, and a picker for your group.</p></a>
+      <a class="card" href="avalanche/"><h3>Avalanche safety kit</h3><p>Transceiver, probe, shovel and airbag packs, and what kit and training each kind of outing needs.</p></a>
+      <a class="card" href="other/"><h3>Other bits</h3><p>Neck gaiters, sun protection, warmers, bags, tuning, phone care and a packing list by trip type.</p></a>
+    </div>
+  </section>
   <footer>General buying guides compiled October 2026. Sizes and figures are typical values; brands differ.</footer>
 </main>
 </body>
