@@ -411,6 +411,104 @@ input, select { min-height: 44px; }
 }
 .back { display: inline-flex; align-items: center; min-height: 40px; margin-bottom: 8px; color: var(--a-link); text-decoration: none; font-size: 15px; }
 </style>
+<!--mobile-kit--><style>
+figure svg.ph { display: none; }
+@media (max-width: 639px) {
+  figure:has(svg.ph) > svg:not(.ph), figure:has(svg.ph) > .dt { display: none; }
+  figure svg.ph { display: block; width: 100%; min-width: 0; height: auto; }
+  figure:has(svg.ph) { padding: 12px 8px; overflow: visible; }
+  .ph-hide { display: none !important; }
+}
+
+.mk-bar { display: none; }
+@media (max-width: 759px) {
+  .mk-bar { display: flex; position: sticky; top: 0; z-index: 30; align-items: center; gap: 8px; min-height: 56px;
+    padding: 6px 8px 6px 16px; background: var(--a-bg-panel); border-bottom: 1px solid var(--a-line); }
+  .mk-bar .cur { flex: 1; min-width: 0; font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mk-bar button { min-height: 44px; padding: 0 16px; border: 1px solid var(--a-line-strong); border-radius: 22px;
+    background: var(--a-bg); color: var(--a-ink); font: inherit; font-size: 15px; cursor: pointer; }
+  .mk-menu { position: absolute; right: 8px; top: 54px; width: min(280px, calc(100vw - 16px)); max-height: 70vh; overflow-y: auto;
+    background: var(--a-bg-panel); border: 1px solid var(--a-line-strong); border-radius: 10px; padding: 6px 0;
+    box-shadow: 0 8px 24px var(--a-line-strong); }
+  .mk-menu[hidden] { display: none; }
+  .mk-menu a { display: flex; align-items: center; min-height: 44px; padding: 0 16px; color: var(--a-ink); text-decoration: none; }
+  .mk-menu a.on { color: var(--a-link); font-weight: 600; }
+  .mk-menu a:hover { background: var(--a-bg-subtle); }
+  section[id] { scroll-margin-top: 64px; }
+}
+
+.mk-seg { display: none; }
+.mk-step { display: contents; }
+.mk-step > button { display: none; }
+@media (min-width: 700px) { .mk-tfold > summary { display: none; } }
+@media (max-width: 699px) {
+  .mk-seg { display: flex; }
+  .mk-step > button { display: block; }
+  .mk-minus { grid-column: 1; grid-row: 1; } .mk-plus { grid-column: 3; grid-row: 1; }
+  .mk-step > input { grid-column: 2; grid-row: 1; }
+}
+
+@media (max-width: 699px) {
+  .card:has(> .calc) { display: flex; flex-direction: column; }
+  .card:has(> .calc) > h3 { order: -2; }
+  .card:has(> .calc) > .result { order: -1; position: sticky; top: 64px; z-index: 5; margin: 4px 0 14px; padding: 10px 14px;
+    background: var(--a-info-bg); border-radius: 8px; box-shadow: 0 4px 12px var(--a-line); }
+  .calc { display: block; }
+  .calc > label { display: flex; width: 100%; margin-bottom: 12px; font-size: 14px; }
+  .calc input[type="number"], .calc select { min-height: 48px; font-size: 17px; }
+  .mk-step { display: grid; grid-template-columns: 48px 1fr 48px; gap: 8px; align-items: center; }
+  .mk-step input[type="number"] { width: 100%; text-align: center; font-weight: 600; -moz-appearance: textfield; }
+  .mk-step input::-webkit-outer-spin-button, .mk-step input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .mk-step button { height: 48px; border-radius: 50%; border: 1px solid var(--a-line-strong); background: var(--a-bg);
+    color: var(--a-ink); font-size: 22px; line-height: 1; cursor: pointer; touch-action: manipulation; }
+  .mk-seg { display: flex; border: 1px solid var(--a-line-strong); border-radius: 8px; overflow: hidden; }
+  .mk-seg button { flex: 1 1 0; min-width: 0; min-height: 48px; border: 0; border-left: 1px solid var(--a-line); background: var(--a-bg);
+    color: var(--a-ink); font: inherit; font-size: 14px; line-height: 1.2; padding: 4px; cursor: pointer; }
+  .mk-seg button:first-child { border-left: 0; }
+  .mk-seg button.on { background: var(--a-link); color: var(--a-on-accent); font-weight: 600; }
+  .mk-seg + select { display: none; }
+}
+
+@media (max-width: 699px) {
+  .mk-fold { border: 1px solid var(--a-line); border-radius: 8px; background: var(--a-bg-raised, var(--a-bg-panel)); margin: 12px 0; }
+  .mk-fold > summary { display: flex; align-items: center; min-height: 52px; padding: 0 14px; font-weight: 600; cursor: pointer; list-style: none; }
+  .mk-fold > summary::-webkit-details-marker { display: none; }
+  .mk-fold > summary::after { content: "+"; margin-left: auto; padding-left: 12px; font-size: 22px; color: var(--a-link); }
+  .mk-fold[open] > summary::after { content: "\2212"; }
+  .mk-fold > .mk-scroll { border-top: 1px solid var(--a-line); }
+  .mk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; min-width: 0; max-width: 100%; }
+  .mk-fold, .card:has(> .calc) > * { min-width: 0; max-width: 100%; }
+  .grid2 > *, .grid3 > *, .card { min-width: 0; }
+  .mk-scroll > table { display: table; width: max-content; min-width: 100%; border: 0; border-radius: 0; margin: 0; }
+  .mk-scroll > table > thead { display: table-header-group; position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+  .mk-scroll > table > tbody { display: table-row-group; }
+  .mk-scroll > table tr { display: table-row; padding: 0; border: 0; }
+  .mk-scroll > table th, .mk-scroll > table td { display: table-cell; padding: 9px 12px; border-bottom: 1px solid var(--a-line);
+    font-size: 15px; min-width: 96px; max-width: 220px; }
+  .mk-scroll > table td[data-label]::before { display: none; }
+  .mk-scroll > table td:first-child { font-weight: 600; }
+  .mk-scroll > table tr > :first-child { position: sticky; left: 0; z-index: 1; background: var(--a-bg-raised, var(--a-bg-panel));
+    box-shadow: 1px 0 0 var(--a-line); }
+  .mk-scroll > table thead tr > :first-child { background: var(--a-bg-sunken, var(--a-bg-subtle)); }
+  .mk-scroll > table tr.hit > :first-child { background: var(--a-info-bg); }
+}
+
+@media (max-width: 699px) {
+  .mk-gloss-on .gloss-filter, .mk-gloss-on #gloss { display: none; }
+  .mk-gloss .mk-az { display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 10px 4px; border-top: 1px solid var(--a-line); }
+  .mk-gloss .mk-az a { width: 32px; height: 40px; display: grid; place-items: center; font-weight: 600; font-size: 14px;
+    color: var(--a-link); text-decoration: none; cursor: pointer; }
+  .mk-gloss .mk-az span { width: 32px; height: 40px; display: grid; place-items: center; font-size: 14px; color: var(--a-line-strong); }
+  .mk-term { border-top: 1px solid var(--a-line); margin: 0 14px; }
+  .mk-term > summary { display: flex; align-items: center; min-height: 48px; font-weight: 600; cursor: pointer; list-style: none; scroll-margin-top: 72px; }
+  .mk-term > summary::-webkit-details-marker { display: none; }
+  .mk-term > summary::after { content: "\203A"; margin-left: auto; padding-left: 12px; font-size: 20px; color: var(--a-ink-secondary); transition: transform .15s; }
+  .mk-term[open] > summary::after { transform: rotate(90deg); }
+  .mk-term > p { margin: 0 0 12px; color: var(--a-ink-secondary); font-size: 15px; }
+}
+.mk-gloss { display: none; }
+@media (max-width: 699px) { .mk-gloss { display: block; } }
+</style><!--/mobile-kit-->
 </head>
 <body>
 
@@ -507,6 +605,46 @@ input, select { min-height: 44px; }
       <text x="448" y="245" font-size="15" font-weight="600">Articulated knees</text>
       <text x="448" y="349" font-size="15" font-weight="600">Internal boot gaiter</text>
       <text x="320" y="408" font-size="15" font-weight="600" text-anchor="middle">Hem</text>
+    </svg>
+    <svg class="ph" viewBox="0 0 340 440" width="100%" role="img" aria-label="Front view of ski pants with waist adjusters, belt loops, thigh vents, articulated knees, internal boot gaiter, hem and kick patches labelled" aria-labelledby="anatomy-ph-title anatomy-ph-desc">
+      <title id="anatomy-ph-title">Anatomy of ski pants</title>
+      <desc id="anatomy-ph-desc">Front view of ski pants with waist adjusters, belt loops, thigh vents, articulated knees, internal boot gaiter, hem and kick patches labelled.</desc>
+      <g transform="translate(-196.4 -14.8) scale(0.9)">
+        <path d="M248,90 L320,90 L314,370 L246,370 Z" fill="var(--a-pant)"/>
+        <path d="M320,90 L392,90 L394,370 L326,370 Z" fill="var(--a-pant)"/>
+        <rect x="248" y="62" width="144" height="30" rx="4" fill="var(--a-trim)"/>
+        <rect x="262" y="52" width="9" height="20" rx="2" fill="var(--a-patch)"/>
+        <rect x="311" y="52" width="9" height="20" rx="2" fill="var(--a-patch)"/>
+        <rect x="370" y="52" width="9" height="20" rx="2" fill="var(--a-patch)"/>
+        <rect x="236" y="70" width="14" height="16" rx="2" fill="var(--a-patch)"/>
+        <rect x="256" y="140" width="8" height="52" rx="3" fill="var(--a-vent)"/>
+        <rect x="376" y="140" width="8" height="52" rx="3" fill="var(--a-vent)"/>
+        <path d="M342,236 Q364,248 386,236" fill="none" stroke="var(--a-line-strong)" stroke-width="4"/>
+        <path d="M254,236 Q276,248 298,236" fill="none" stroke="var(--a-line-strong)" stroke-width="4"/>
+        <rect x="330" y="334" width="60" height="30" fill="none" stroke="var(--a-gaiter)" stroke-width="4" stroke-dasharray="6 4"/>
+        <rect x="248" y="330" width="16" height="40" rx="3" fill="var(--a-patch)"/>
+        <line x1="246" y1="370" x2="314" y2="370" stroke="var(--a-line-strong)" stroke-width="6"/>
+        <line x1="326" y1="370" x2="394" y2="370" stroke="var(--a-line-strong)" stroke-width="6"/>
+      </g>
+      <g stroke="var(--a-ink-secondary)" stroke-width="1.2" fill="none">
+        <polyline points="22,50 22,20 184,20"/>
+        <polyline points="146,41 184,54"/>
+        <polyline points="150,135 184,135"/>
+        <polyline points="151,201 184,201"/>
+        <polyline points="156,299 184,299"/>
+        <polyline points="92,324 92,353 184,353"/>
+        <polyline points="34,322 34,395 184,395"/>
+      </g>
+      <text x="190" y="25" font-size="15" font-weight="600">Waist adjusters</text>
+      <text x="190" y="59" font-size="15" font-weight="600">Belt loops</text>
+      <text x="190" y="140" font-size="15" font-weight="600">Thigh vents</text>
+      <text x="190" y="206" font-size="15" font-weight="600">Articulated</text>
+      <text x="190" y="224" font-size="15" font-weight="600">knees</text>
+      <text x="190" y="304" font-size="15" font-weight="600">Internal boot</text>
+      <text x="190" y="322" font-size="15" font-weight="600">gaiter</text>
+      <text x="190" y="358" font-size="15" font-weight="600">Hem</text>
+      <text x="190" y="400" font-size="15" font-weight="600">Kick patches /</text>
+      <text x="190" y="418" font-size="15" font-weight="600">scuff guards</text>
     </svg>
     <figcaption>A typical pair of ski pants, front view. The gaiter sits inside the hem and clips around the boot, the knees are pre-shaped so they bend without pulling, and the lower hem is reinforced where edges and buckles rub.</figcaption>
   </figure>
@@ -722,5 +860,160 @@ input, select { min-height: 44px; }
   calc();
 })();
 </script>
+<!--mobile-kit--><script>
+(function () {
+  var phone = window.matchMedia('(max-width: 699px)');
+  var main = document.querySelector('main');
+  if (!main) { return; }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) { e.className = cls; }
+    if (text) { e.textContent = text; }
+    return e;
+  }
+  function fire(target) {
+    target.dispatchEvent(new Event('input', { bubbles: true }));
+    target.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  var secs = [].slice.call(main.querySelectorAll('section[id]')).filter(function (s) { return s.querySelector('h2'); });
+  var hero = document.querySelector('header.hero');
+  if (secs.length && hero) {
+    var bar = el('div', 'mk-bar'), cur = el('span', 'cur', secs[0].querySelector('h2').textContent);
+    var btn = el('button', '', 'Sections ▾'), menu = el('div', 'mk-menu');
+    btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
+    menu.hidden = true;
+    secs.forEach(function (s) {
+      var a = el('a', '', s.querySelector('h2').textContent);
+      a.href = '#' + s.id;
+      a.addEventListener('click', function () { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); });
+      menu.appendChild(a);
+    });
+    btn.addEventListener('click', function () {
+      menu.hidden = !menu.hidden;
+      btn.setAttribute('aria-expanded', String(!menu.hidden));
+    });
+    document.addEventListener('click', function (ev) {
+      if (!menu.hidden && !bar.contains(ev.target)) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    });
+    bar.appendChild(cur); bar.appendChild(btn); bar.appendChild(menu);
+    hero.parentNode.insertBefore(bar, hero.nextSibling);
+    var links = menu.querySelectorAll('a'), ticking = false;
+    function spy() {
+      ticking = false;
+      var idx = -1;
+      secs.forEach(function (s, i) { if (s.getBoundingClientRect().top < 90) { idx = i; } });
+      cur.textContent = idx < 0 ? document.title : secs[idx].querySelector('h2').textContent;
+      [].forEach.call(links, function (a, i) { a.classList.toggle('on', i === idx); });
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
+  }
+
+  [].forEach.call(document.querySelectorAll('.calc input[type="number"]'), function (inp) {
+    var wrap = el('div', 'mk-step'), minus = el('button', 'mk-minus', '−'), plus = el('button', 'mk-plus', '+');
+    minus.type = plus.type = 'button';
+    minus.setAttribute('aria-label', 'Decrease'); plus.setAttribute('aria-label', 'Increase');
+    inp.parentNode.insertBefore(wrap, inp);
+    wrap.appendChild(minus); wrap.appendChild(inp); wrap.appendChild(plus);
+    function bump(d) {
+      var step = parseFloat(inp.step) || 1, v = (parseFloat(inp.value) || 0) + d * step;
+      if (inp.min !== '' && v < +inp.min) { v = +inp.min; }
+      if (inp.max !== '' && v > +inp.max) { v = +inp.max; }
+      inp.value = Math.round(v / step) * step;
+      fire(inp);
+    }
+    [[minus, -1], [plus, 1]].forEach(function (pair) {
+      var b = pair[0], d = pair[1], timer = null, rep = null;
+      function stop() { clearTimeout(timer); clearInterval(rep); timer = rep = null; }
+      b.addEventListener('pointerdown', function (ev) {
+        ev.preventDefault(); bump(d);
+        timer = setTimeout(function () { rep = setInterval(function () { bump(d); }, 70); }, 400);
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { b.addEventListener(t, stop); });
+      b.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); bump(d); } });
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.calc select'), function (sel) {
+    var opts = [].slice.call(sel.options);
+    if (opts.length > 4 || opts.some(function (o) { return o.text.length > 16; })) { return; }
+    var seg = el('div', 'mk-seg');
+    seg.setAttribute('role', 'group');
+    opts.forEach(function (o) {
+      var b = el('button', '', o.text);
+      b.type = 'button';
+      b.addEventListener('click', function () { sel.value = o.value; sync(); fire(sel); });
+      seg.appendChild(b);
+    });
+    function sync() {
+      [].forEach.call(seg.children, function (b, i) {
+        var on = opts[i].value === sel.value;
+        b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on));
+      });
+    }
+    sel.addEventListener('change', sync);
+    sel.parentNode.insertBefore(seg, sel);
+    sync();
+  });
+
+  var folds = [];
+  [].forEach.call(main.querySelectorAll('table'), function (t) {
+    if (t.id === 'gloss' || t.classList.contains('ph-hide')) { return; }
+    var scroll = el('div', 'mk-scroll');
+    t.parentNode.insertBefore(scroll, t);
+    scroll.appendChild(t);
+    var rows = t.tBodies.length ? t.tBodies[0].rows.length : 0;
+    if (rows < 5) { return; }
+    var head = null, n = scroll;
+    while (n && !head) {
+      var p = n.previousElementSibling;
+      while (p && !head) { if (/^H[34]$/.test(p.tagName)) { head = p; } p = p.previousElementSibling; }
+      n = n.parentElement;
+      if (n && (n.tagName === 'SECTION' || n.tagName === 'MAIN')) { break; }
+    }
+    var title = head ? head.textContent : (scroll.closest('section') && scroll.closest('section').querySelector('h2') || {}).textContent || 'Table';
+    var d = el('details', 'mk-fold mk-tfold'), s = el('summary', '', title + ' · ' + rows + ' rows');
+    scroll.parentNode.insertBefore(d, scroll);
+    d.appendChild(s); d.appendChild(scroll);
+    folds.push(d);
+  });
+  function setFolds() { folds.forEach(function (d) { d.open = !phone.matches; }); }
+  setFolds();
+  if (phone.addEventListener) { phone.addEventListener('change', setFolds); }
+
+  var gloss = document.getElementById('gloss');
+  if (gloss) {
+    var terms = [].map.call(gloss.querySelectorAll('tbody tr'), function (r) {
+      return [r.cells[0].textContent.trim(), r.cells[1].textContent.trim()];
+    });
+    var box = el('details', 'mk-fold mk-gloss'), sum = el('summary', '', 'Glossary · ' + terms.length + ' terms');
+    var az = el('div', 'mk-az'), first = {};
+    box.appendChild(sum); box.appendChild(az);
+    terms.forEach(function (t) {
+      var d = el('details', 'mk-term'), s2 = el('summary', '', t[0]), p = el('p', '', t[1]);
+      d.appendChild(s2); d.appendChild(p); box.appendChild(d);
+      var c = t[0].charAt(0).toUpperCase();
+      if (/[A-Z]/.test(c) && !first[c]) { first[c] = d; }
+      if (!/[A-Z]/.test(c) && !first['#']) { first['#'] = d; }
+    });
+    (first['#'] ? ['#'] : []).concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')).forEach(function (c) {
+      if (first[c]) {
+        var a = el('a', '', c);
+        a.href = '#';
+        a.addEventListener('click', function (ev) {
+          ev.preventDefault(); first[c].open = true;
+          first[c].querySelector('summary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        az.appendChild(a);
+      } else { az.appendChild(el('span', '', c)); }
+    });
+    var anchor = gloss.parentNode.querySelector('.gloss-filter') || gloss;
+    anchor.parentNode.insertBefore(box, anchor);
+    gloss.closest('section').classList.add('mk-gloss-on');
+  }
+})();
+</script><!--/mobile-kit-->
 </body>
 </html>
